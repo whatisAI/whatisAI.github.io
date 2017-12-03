@@ -14,13 +14,14 @@ The easiest way to make your first post is to edit this one. Go into /_posts/ an
 # First post 
 ## first post of many posts!
 
-eq $$ y = A x $$
+eq <p>$$ y = A x $$</p>
 
 eq 
-
+<p>
 $$ 
 y = A x 
 $$
+</p>
 
 changing
 

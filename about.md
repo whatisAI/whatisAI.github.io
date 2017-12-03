@@ -4,12 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I am an engineer, physicist and applied mathematician. 
 
 ### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
-
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
+https://www.linkedin.com/in/clara-castellanos-lopez-559b0b92/

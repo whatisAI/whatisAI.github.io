@@ -17,9 +17,25 @@ The easiest way to make your first post is to edit this one. Go into /_posts/ an
 eq <p>$$ y = A x $$</p>
 
 eq 
+
 <p>
 $$ 
 y = A x 
+$$
+</p>
+
+
+$$
+Var_{total} = Var_{between} + Var_{within} 
+$$
+
+
+<p>
+$$
+\begin{array}{rcl} 
+Var_{between} &=& E[(\bar{x}_c - \bar{x})^2] \\ 
+Var_{within} &=& E[(x_{c,t} - \bar{x}_c)^2] 
+\end{array}
 $$
 </p>
 

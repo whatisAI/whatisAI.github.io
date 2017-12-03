@@ -3,6 +3,8 @@ layout: post
 title: You're up and running!
 ---
 
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 
 Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
 

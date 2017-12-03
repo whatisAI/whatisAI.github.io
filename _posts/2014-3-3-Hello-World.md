@@ -16,5 +16,7 @@ The easiest way to make your first post is to edit this one. Go into /_posts/ an
 
 $$ y = A x $$
 
+$ y = A x $
+
 changing
 

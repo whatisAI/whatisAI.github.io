@@ -8,3 +8,4 @@ I am an engineer, physicist and applied mathematician.
 
 ### More Information
 https://www.linkedin.com/in/clara-castellanos-lopez-559b0b92/
+[LinkedIn](https://www.linkedin.com/in/clara-castellanos-lopez-559b0b92/)

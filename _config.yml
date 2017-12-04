@@ -10,7 +10,8 @@ description: Posts on machine learning, AI, data analysis, applied mathematics a
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/whatisAI/whatisAI.github.io/master/images/turt.png
-#https://github.com/whatisAI/whatisAI.github.io/blob/master/images/turt.png
+#The raw.githubusercontent.com domain is used to serve unprocessed versions of files stored in GitHub repositories.
+#If you browse to a file on GitHub and then click the Raw link, that's where you'll go.
 
 #
 # Flags below are optional

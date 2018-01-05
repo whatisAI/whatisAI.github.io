@@ -1,8 +1,8 @@
-#Introduction to **game playing**
+# Introduction to **game playing**
 
 Trees are common in game representations. Every node in a tree is a possible game board, and child nodes represent possible game actions. 
 
-The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board. Imagine there are **two players $P0$ and $P1$**. Suppose there are $b_1$ initial possible first moves for player $P0$. The first level of a tree will contain $b_1$ nodes (possible actions), and player $0$ will try to **maximize** his chance of winning with that action. For each node $b_1$,  $P1$ has, for example,  $b_2$ possible actions. In the next game turn, at level 2, player $P1$ will try to **minimize** the chance of $P0$ winning. As we move down the tree, taking turns between player $P1$ and player $P2$, the function that evalutes the probablity of player $P1$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. 
+The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board. Imagine there are **two players $$P0$$ and $$P1$$**. Suppose there are $$b_1$$ initial possible first moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$0$$ will try to **maximize** his chance of winning with that action. For each node $b_1$,  $P1$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $P1$ will try to **minimize** the chance of $P0$ winning. As we move down the tree, taking turns between player $P1$ and player $P2$, the function that evalutes the probablity of player $P1$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. 
 
 
 
@@ -14,24 +14,29 @@ A first approach in creating a game playing agent, is to create a tree with all 
 
 - **Nodes in a tree** :   Imagine a tree with a branching factor of $$b=3$$. At level zero there is one node. At level 1, $3$ nodes are added. At level two, $9$ nodes are added. The sum of all nodes in a tree is 
   $$
-  S_d = \sum _{i=0}^{i=d} 3^i  = 1 + ... + 3^d 
+  S_d = \sum _{i=0}^{i=d} 3^i  = 1 + ... + 3^d
   $$
   To find $S_d$, multiply equation (1) by 3,
   $$
   3 s_d = \sum _{i=0}^{i=d} 3^i = 3 + ... + 3^{d+1},
   $$
   and subtract (1) from (2).  The total number of nodes in a tree of depth $d$ with branching factor $3$ is,
+
+  ​
   $$
   S_d = \frac{3^{d+1}-1}{2}.
   $$
-   
+
+
+
 
   In general, for a tree with branching factor $b$, the total number of nodes is
 
   ​
-  $$
+$$
   S_d = \frac{b^{d+1}-1}{b-1}.
-  $$
+$$
+
 
 
 

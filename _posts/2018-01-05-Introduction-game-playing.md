@@ -14,11 +14,11 @@ A first approach in creating a game playing agent, is to create a tree with all 
 
 $$S_d = \sum _{i=0}^{i=d} 3^i  = 1 + ... + 3^d$$
 
-To find $S_d$, multiply equation (1) by 3,
+To find $$S_d$$, multiply equation (1) by 3,
 
 $$3 s_d = \sum _{i=0}^{i=d} 3^i = 3 + ... + 3^{d+1},$$
 
-  and subtract (1) from (2).  The total number of nodes in a tree of depth $d$ with branching factor $3$ is,
+  and subtract (1) from (2).  The total number of nodes in a tree of depth $$d$$ with branching factor $$3$$ is,
 
   ​
   $$S_d = \frac{3^{d+1}-1}{2}.$$
@@ -69,7 +69,7 @@ Searching for a good gaming strategy can rarely be done by brute force by visiti
 
    $$I_d =S_0 + S_1 + S_2 + S_d \approx 1+b+b^2+…+b^{d-1}+b^{d}$$. 
 
-  Note that $O(S_d) = b^{d}$ and $O(I_d) = b^{d}$, so searching through ONE tree of depth $d$ or **iteratively** searaching through all trees until a tree of depth $d$ has the same computational complexity since most the compute time is spent on the last level. 
+  Note that $$O(S_d) = b^{d}$$ and $$O(I_d) = b^{d}$$, so searching through ONE tree of depth $$d$$ or **iteratively** searaching through all trees until a tree of depth $$d$$ has the same computational complexity since most the compute time is spent on the last level. 
 
 - **Alpha-beta pruning**:    When doing the minimax algorithm, 
 
@@ -77,7 +77,7 @@ Searching for a good gaming strategy can rarely be done by brute force by visiti
 
   - **Depth-First-Search** (DFS): explores a path all the way to a leaf before backtracking and exploring another path. For example, you can print the values of a tree using DFS in three different ways: 
 
-    - **pre-order** : print current node, go to left node and print, backtrack, go to right node and print.
+    - **Pre-order** : print current node, go to left node and print, backtrack, go to right node and print.
 
     - **In-order**: Traverse the tree to the lefmost child and print it first. Backtrack and print. Traverse the tree to the rightmots child, and print it. 
 

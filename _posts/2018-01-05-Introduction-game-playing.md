@@ -1,10 +1,12 @@
-Trees are common in game representations. Every node in a tree is a possible game board, and child nodes represent possible game actions. 
-
+Trees are common game representations. Every node in a tree is a possible game board, and child nodes represent possible game actions.
+​                   
 The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board. Imagine there are **two players $$P0$$ and $$P1$$**. Suppose there are $$b_1$$ initial possible first moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $P1$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. 
 
 
 
-**Minimax algorithm**: Once all the possible game states have been *played to end game*, it is possible to see some branches lead to $P0$ winning the game. How can the information about the outcome of the game be propagated up to the first depth of the tree to choose a first action? This is where we make use of the minimax algorithm. If the game end resulted in a failure for player $$P0$$ a value of  $$v=-1$$ (for example) is assigned to that leaf. On the contrary, if the game end resulted in a win for player $$X$$ a value of $$v=+1$$ is assigned to that leaf. The values $$v$$ of each leaf are then *propagated up the tree*,  by selecting the minimum/maximum (*mini-max*) value of the child nodes at each node, until we reach the root. Moving up the tree with mini-max ensures that $$P0$$ chooses a brach that maximizes his outcome and $$P1$$ chooses a branch that minimizes the outcome of his opponent.  When we reach the root, $$P0$$ will know which is(are) the first best move(s). There are great tutorials and lectures out there. [This blog explains minimax using tic-tac-toe as an example](https://www.neverstopbuilding.com/blog/2013/12/13/tic-tac-toe-understanding-the-minimax-algorithm13/) .
+**Minimax algorithm**: Once all the possible game states have been *played to end game*, it is possible to see some branches lead to $P0$ winning the game. How can the information about the outcome of the game be propagated up to the first depth of the tree to choose a first action? This is where we make use of the minimax algorithm. 
+
+If the game end resulted in a failure for player $$P0$$ a value of  $$v=-1$$ (for example) is assigned to that leaf. On the contrary, if the game end resulted in a win for player $$X$$ a value of $$v=+1$$ is assigned to that leaf. The values $$v$$ of each leaf are then *propagated up the tree*,  by selecting the minimum/maximum (*mini-max*) value of the child nodes at each node, until we reach the root. Moving up the tree with mini-max ensures that $$P0$$ chooses a brach that maximizes his outcome and $$P1$$ chooses a branch that minimizes the outcome of his opponent.  When we reach the root, $$P0$$ will know which is(are) the first best move(s). There are great tutorials and lectures out there. [This blog explains minimax using tic-tac-toe as an example](https://www.neverstopbuilding.com/blog/2013/12/13/tic-tac-toe-understanding-the-minimax-algorithm13/) .
 
 
 
@@ -37,7 +39,7 @@ $$S_d = \frac{b^{d+1}-1}{b-1}.$$
 
 Searching for a good gaming strategy can rarely be done by brute force by visiting all the nodes, because we can see that the *number of nodes grows exponentially with the depth* of the tree ($$O(S^d) = b^d$$). Therefore, we have to *limit the depth* of the search.
 
-- **Depth limited search**: The number of nodes to be visited is of the order of  $$n = b^d$$  where $$b$$ is the branching factor and  $$d$$ is the depth.  Assume a computer can perform $$ T_0 = 10^9 $$ operations per second, or can visit $10^9$ nodes per second. If the maximum time searching for a next move is  $$T = k T_0 $$ , then   $$ b^d <  T $$. Therefore, the maximum depth that can be searched in this time is 
+- **Depth limited search**: The number of nodes to be visited is of the order of  $$n = b^d$$  where $$b$$ is the branching factor and  $$d$$ is the depth.  Assume a computer can perform $$ T_0 = 10^9 $$ operations per second, or can visit $$10^9$$ nodes per second. If the maximum time searching for a next move is  $$T = k T_0 $$ , then   $$ b^d <  T $$. Therefore, the maximum depth that can be searched in this time is 
   $$d < \frac{\log_{10} T}{\log_{10}{b}}$$
   ​
 
@@ -71,8 +73,6 @@ Searching for a good gaming strategy can rarely be done by brute force by visiti
 
   Note that $$O(S_d) = b^{d}$$ and $$O(I_d) = b^{d}$$, so searching through ONE tree of depth $$d$$ or **iteratively** searaching through all trees until a tree of depth $$d$$ has the same computational complexity since most the compute time is spent on the last level. 
 
-- **Alpha-beta pruning**:    When doing the minimax algorithm, 
-
 - **Vocabulary**
 
   - **Depth-First-Search** (DFS): explores a path all the way to a leaf before backtracking and exploring another path. For example, you can print the values of a tree using DFS in three different ways: 
@@ -86,4 +86,7 @@ Searching for a good gaming strategy can rarely be done by brute force by visiti
       ​
 
 # Let's play
+
+![isolation55](./GifIsolation5x5heuristic2-2018-28-06-17-28-52.gif)
+
 

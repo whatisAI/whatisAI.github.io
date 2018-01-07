@@ -24,13 +24,13 @@ A first approach in creating a game playing agent, is to create a tree with all 
 
 $$
 \begin{equation}
-S_d = \sum _{i=0}^{i=d} 3^i  = 1 + ... + 3^d \label{eq:one}
+S_d = \sum _{i=0}^{i=d} 3^i  = 1 + ... + 3^d \tag{1}\label{eq:sd}
 \end{equation}
 $$
 
 To find $$S_d$$, multiply equation (1) by 3,
 
-$$3 s_d = \sum _{i=0}^{i=d} 3^i = 3 + ... + 3^{d+1},$$
+$$\begin{equation} 3 s_d = \sum _{i=0}^{i=d} 3^i = 3 + ... + 3^{d+1}, \tag{2}\label{eq: 3sd} \end{equation}$$
 
   and subtract (1) from (2).  The total number of nodes in a tree of depth $$d$$ with branching factor $$3$$ is,
 

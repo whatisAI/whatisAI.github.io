@@ -24,7 +24,7 @@ A first approach in creating a game playing agent, is to create a tree with all 
 
 $$
 \begin{equation}
-S_d = \sum _{i=0}^{i=d} 3^i  = 1 + ... + 3^d
+S_d = \sum _{i=0}^{i=d} 3^i  = 1 + ... + 3^d \tag{abc}\label{eq:one}
 \end{equation}
 $$
 

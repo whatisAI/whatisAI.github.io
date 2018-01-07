@@ -1,3 +1,6 @@
+layout: post
+title: Introduction to Game Playing
+
 Trees are common game representations. Every node in a tree is a possible game board, and child nodes represent possible game actions.
 ​                   
 The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board. Imagine there are **two players $$P0$$ and $$P1$$**. Suppose there are $$b_1$$ initial possible first moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $P1$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. 

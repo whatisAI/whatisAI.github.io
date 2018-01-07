@@ -1,5 +1,8 @@
+---
 layout: post
 title: Introduction to Game Playing
+---
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 Trees are common game representations. Every node in a tree is a possible game board, and child nodes represent possible game actions.
 ​                   

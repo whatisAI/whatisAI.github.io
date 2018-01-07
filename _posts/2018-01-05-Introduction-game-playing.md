@@ -6,14 +6,15 @@ title: Introduction to Game Playing
 
 How can we teach a computer to play games ? The first thing we need is a way to represent game states. *Trees* are common data structures used for *game representations*. Every node in a tree is a possible game board (state), and child nodes are possible game actions.
 
-​                   
-The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board. Imagine there are **two players $$P0$$ and $$P1$$**. Suppose there are $$b_1$$ initial possible first moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $P1$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. 
+
+
+The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board. Imagine there are **two players $$P0$$ and $$P1$$**. Suppose there are $$b_1$$ initial possible first moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $$P1$$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. 
 
 
 
-**Minimax algorithm**: Once all the possible game states have been *played to end game*, it is possible to see some branches lead to $P0$ winning the game. How can the information about the outcome of the game be propagated up to the first depth of the tree to choose a first action? This is where we make use of the minimax algorithm. 
+**Minimax algorithm**: Once all the possible game states have been *played to end game*, it is possible to see some branches lead to $$P0$$ winning the game. How can the information about the outcome of the game be propagated up to the first depth of the tree to choose a first action? This is where we make use of the minimax algorithm. 
 
-If the game end resulted in a failure for player $$P0$$ a value of  $$v=-1$$ (for example) is assigned to that leaf. On the contrary, if the game end resulted in a win for player $$X$$ a value of $$v=+1$$ is assigned to that leaf. The values $$v$$ of each leaf are then *propagated up the tree*,  by selecting the minimum/maximum (*mini-max*) value of the child nodes at each node, until we reach the root. Moving up the tree with mini-max ensures that $$P0$$ chooses a brach that maximizes his outcome and $$P1$$ chooses a branch that minimizes the outcome of his opponent.  When we reach the root, $$P0$$ will know which is(are) the first best move(s). There are great tutorials and lectures out there. [This blog explains minimax using tic-tac-toe as an example](https://www.neverstopbuilding.com/blog/2013/12/13/tic-tac-toe-understanding-the-minimax-algorithm13/) .
+If the game end resulted in a failure for player $$P0$$, a value of  $$v=-1$$ (for example) is assigned to that leaf. On the contrary, if the game end resulted in a win for player $$P1$$ a value of $$v=+1$$ is assigned to that leaf. The values $$v$$ of each leaf are then *propagated up the tree*,  by selecting the minimum/maximum (*mini-max*) value among the child nodes, at each node moving up the tree, until we reach the root. Moving up the tree with mini-max ensures that $$P0$$ chooses a brach that maximizes his outcome and $$P1$$ chooses a branch that minimizes the outcome of his opponent.  When we reach the root, $$P0$$ will know which is(are) the first best move(s) of the branches he analyzed. There are great tutorials and lectures out there. [This blog explains minimax using tic-tac-toe as an example](https://www.neverstopbuilding.com/blog/2013/12/13/tic-tac-toe-understanding-the-minimax-algorithm13/) .
 
 
 
@@ -21,7 +22,7 @@ A first approach in creating a game playing agent, is to create a tree with all 
 
 - **Nodes in a tree** :   Imagine a tree with a branching factor of $$b=3$$. At level zero there is one node. At level 1, $$3$$ nodes are added. At level two, $$9$$ nodes are added. The sum of all nodes in a tree is
 
-$$S_d = \sum _{i=0}^{i=d} 3^i  = 1 + ... + 3^d$$
+$$\begin{equation} S_d = \sum _{i=0}^{i=d} 3^i  = 1 + ... + 3^d  \end{equation}$$
 
 To find $$S_d$$, multiply equation (1) by 3,
 

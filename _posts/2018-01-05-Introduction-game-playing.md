@@ -22,7 +22,11 @@ A first approach in creating a game playing agent, is to create a tree with all 
 
 - **Nodes in a tree** :   Imagine a tree with a branching factor of $$b=3$$. At level zero there is one node. At level 1, $$3$$ nodes are added. At level two, $$9$$ nodes are added. The sum of all nodes in a tree is
 
-$$\begin{equation} S_d = \sum _{i=0}^{i=d} 3^i  = 1 + ... + 3^d  \end{equation}$$
+$$
+\begin{equation}
+S_d = \sum _{i=0}^{i=d} 3^i  = 1 + ... + 3^d
+\end{equation}
+$$
 
 To find $$S_d$$, multiply equation (1) by 3,
 

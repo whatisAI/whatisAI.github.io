@@ -93,6 +93,6 @@ Searching for a good gaming strategy can rarely be done by brute force by visiti
 
 # Let's play
 
-![isolation55](![Isolation55]({{ site.baseurl }}/images/GifIsolation5x5heuristic2-2018-28-06-17-28-52.gif))
+![gdp image]({{ site.baseurl }}/images/Gif-2017-29-22-12-29-23.gif)
 
 

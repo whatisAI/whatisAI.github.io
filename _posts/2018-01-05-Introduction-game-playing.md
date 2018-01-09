@@ -4,13 +4,19 @@ title: Introduction to Game Playing
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-How can we teach a computer to play games ? The first thing we need is a way to represent game states. *Trees* are common data structures used for *game representations*. Every node in a tree is a possible game board (state), and child nodes are possible game actions.
+How can we teach a computer to play games? The first thing we need is a way to represent game states. *Trees* are common data structures used for *game representations*. Every node in a tree is a possible game board (state), and child nodes are possible game actions.
 
   The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board. Imagine there are **two players $$P0$$ and $$P1$$**. Suppose there are $$b_1$$ initial possible first moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $$P1$$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. 
 
+
+
+![TicTacToeGameState]({{ site.baseurl }}/images//TicTacToeGameState.png)
+
+
+
 **Minimax algorithm**: Once all the possible game states have been *played to end game*, it is possible to see some branches lead to $$P0$$ winning the game. How can the information about the outcome of the game be propagated up to the first depth of the tree to choose a first action? This is where we make use of the minimax algorithm. 
 
-  If the game end resulted in a failure for player $$P0$$, a value of  $$v=-1$$ (for example) is assigned to that leaf. On the contrary, if the game end resulted in a win for player $$P1$$ a value of $$v=+1$$ is assigned to that leaf. The values $$v$$ of each leaf are then *propagated up the tree*,  by selecting the minimum/maximum (*mini-max*) value among the child nodes, at each node moving up the tree, until we reach the root. Moving up the tree with mini-max ensures that $$P0$$ chooses a brach that maximizes his outcome and $$P1$$ chooses a branch that minimizes the outcome of his opponent.  When we reach the root, $$P0$$ will know which is(are) the first best move(s) of the branches he analyzed. There are great tutorials and lectures out there. [This blog explains minimax using tic-tac-toe as an example](https://www.neverstopbuilding.com/blog/2013/12/13/tic-tac-toe-understanding-the-minimax-algorithm13/) .
+  If the game end resulted in a failure for player $$P0$$, a value of  $$v=-1$$ (for example) is assigned to that leaf. On the contrary, if the game end resulted in a win for player $$P1$$ a value of $$v=+1$$ is assigned to that leaf. The values $$v$$ of each leaf are then *propagated up the tree*,  by selecting the minimum/maximum (*mini-max*) value among the child nodes, at each node moving up the tree, until we reach the root. Moving up the tree with mini-max ensures that $$P0$$ chooses a branch that maximizes his outcome and $$P1$$ chooses a branch that minimizes the outcome of his opponent.  When we reach the root, $$P0$$ will know which is(are) the first best move(s) of the branches he analyzed. There are great tutorials and lectures out there. [This blog explains minimax using tic-tac-toe as an example](https://www.neverstopbuilding.com/blog/2013/12/13/tic-tac-toe-understanding-the-minimax-algorithm13/) .
 
   A first approach in creating a game playing agent, is to create a tree with all possible moves and use the minimax algorithm to determine which action to take at each level. This requires to *visit all nodes in a tree*. How many nodes are there for a tree with a specific depth and branching factor ?
 
@@ -27,17 +33,17 @@ To find $$S_d$$, multiply equation (1) by 3,
 $$\begin{equation} 3 s_d = \sum _{i=0}^{i=d} 3^i = 3 + ... + 3^{d+1}, \tag{2}\label{eq: 3sd} \end{equation}$$
 
   and subtract (1) from (2).  The total number of nodes in a tree of depth $$d$$ with branching factor $$3$$ is,
-  
+
 $$S_d = \frac{3^{d+1}-1}{2}.$$
 
   In general, for a tree with branching factor $b$, the total number of nodes is
-  
+
 $$S_d = \frac{b^{d+1}-1}{b-1}.$$
 
   Searching for a good gaming strategy can rarely be done by brute force by visiting all the nodes, because we can see that the *number of nodes grows exponentially with the depth* of the tree ($$O(S^d) = b^d$$). Therefore, we have to *limit the depth* of the search.
 
 - **Depth limited search**: The number of nodes to be visited is of the order of  $$n = b^d$$  where $$b$$ is the branching factor and  $$d$$ is the depth.  Assume a computer can perform $$ T_0 = 10^9 $$ operations per second, or can visit $$10^9$$ nodes per second. If the maximum time searching for a next move is  $$T = k T_0 $$ , then   $$ b^d <  T $$. Therefore, the maximum depth that can be searched in this time is $$d < \frac{\log_{10} T}{\log_{10}{b}}.$$
-- **Static evaluation/Evaluation function**:  At level $$d$$, the algorithm has to assume each node is a leaf and score each node with a function that is indicative of the probability of success if the game were to continue down that branch. A *static evaluator* (or *evaluation function*) is used to score each node and make a decision at this level. Designing the right static evaluator is tricky. Static evaluators should be:
+- **Static evaluation/Evaluation function/scoring function**:  At level $$d$$, the algorithm has to assume each node is a leaf and score each node with a function that is indicative of the probability of success if the game were to continue down that branch. A *static evaluator* (or *evaluation function*) is used to score each node and make a decision at this level. Designing the right static evaluator is tricky. Static evaluators should be:
 
   - fast : If it takes longer to compute the evaluation function, than to search one level deeper, then in some games it may be better to search one level deeper. 
   - accurate: Although short in compute time, the static evaluator should capture the chance of success for each node.
@@ -72,9 +78,30 @@ $$S_d = \frac{b^{d+1}-1}{b-1}.$$
 
 # Let's play
 
-![gdp image]({{ site.baseurl }}/images/GifIsolation5x5heuristic2-2018-28-06-17-28-52.gif)
+Let's use minimax and iterative deepening to create two agents to play matches against each other. I am also using alpha-beta pruning which is a way to discard exploring some branches to save some computational time. We willl play games where we have complete information.
 
-![gdp image]({{ site.baseurl }}/images/GifIsolation7x7heuristic2.gif)
+The playing agent is provided : 
+-  with information on possilble actions
+-  condition to end game
+-  condition to win game.
+-  the static evaluation function
+
+I will use a basic evaluation function for $$P1$$ simulating an average player, and look for evaluation functions that allow $$P0$$ to win if it is playing first or second.
+
+* **Game 1 : Tic-tac-toe:** 
+   - Possible actions: players can place themselves in any empty space
+   - The game ends if a player wins, or if there are no more empty spaces.
+   - A player wins it has placed itself in three positions wich are in a straight line.
+
+* **Game 2: Isolation:**
+  - Possible actions : For the first move, players can place themselves in any empty box. For further moves, players can move like a queen in chess. That is players can move in straight lines.
+  - Condition to end game: The game ends if a player looses or if there are no empty places on the board.
+  - Condition to win the game: A player wins the game if his opponent looses. A player looses if it has no possible actions and cannot move.
+
+![Isolation55]({{ site.baseurl }}/images/GifIsolation5x5heuristic2-2018-28-06-17-28-52.gif)
+
+![Isolation77]({{ site.baseurl }}/images/GifIsolation7x7heuristic2.gif)
 
 
 
+![TicTacToe]({{ site.baseurl }}/images/GifTicTacToePerfectPlayers.gif)

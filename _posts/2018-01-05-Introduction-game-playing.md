@@ -16,7 +16,7 @@ How can we teach a computer to play games? The first thing we need is a way to r
 <img src="{{ site.baseurl }}/images/TicTacToeGameStateMove5.png" alt="gamestate" >
 </div>
 
-  The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board, or a board somewhere along the game. Consider two players denoted by  **$$P0$$** and **$$P1$$**. In the figure above, the first player is trying to decide the fifth action of the game (his third action).  Suppose there are $$b_1$$ possible moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$P0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $$P1$$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. 
+  The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board, or a board somewhere along the game. Consider two players denoted by  **$$P0$$** and **$$P1$$**. In the figure above, the first player is trying to decide the fifth action of the game (his third action).  Suppose there are $$b_1$$ possible moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$P0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $$P1$$ winning is being maximized, then minimized, in an alternating fashion
   
   
 ### <a name="minimax">Minimax algorithm</a>: 
@@ -96,7 +96,9 @@ At level $$d$$, the algorithm has to assume each node is a leaf, and score each 
 
 # Let's play
 
-Let's use [minimax](#minimax) and [iterative deepening](#ID) to create two agents to play matches against each other. I am also using alpha-beta pruning which is a way to discard  some branches when exploring to save some computational time. We willl play games where we have complete information.
+Let's use [minimax](#minimax) and [iterative deepening](#ID) to create two agents to play matches against each other. I am also using alpha-beta pruning which is a way to discard  some branches when exploring to save some computational time. The game tree is visited using depth first search. When using iterative deepening, however, the search is more similar to breadth first search. 
+
+We willl play games where we have complete information.
 
 The playing agent is provided : 
 -  with information on possilble actions
@@ -134,4 +136,4 @@ Watch a match with restrictive time limit, on a $$7$$x$$7$$ board:
 
 # More games....
 
-Check out the [2016 Nature article on AlphaGo.](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf)
+In these games there is no learning involved. At each turn, the playing agents use exclusively the mini-max algorithm to evaluate their possiblilities and choose an action. To read about games where the agents learn, check out the [2016 Nature article on AlphaGo](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf) by DeepMind.

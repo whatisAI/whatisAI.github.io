@@ -4,8 +4,8 @@ title: How to teach a computer to play games
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-<img src="{{ site.baseurl }}/images/GifTicTacToePerfectPlayersFast.gif" alt="Drawing" style="width: 400px;"/>
-
+<div style="text-align: center;">
+<img src="{{ site.baseurl }}/images/GifTicTacToePerfectPlayersFast.gif" alt="Drawing" style="width: 300px;"/> </div>
 
 How can we teach a computer to play games? The first thing we need is a way to represent game states. *Trees* are common data structures used for *game representations*. Every node in a tree is a possible game board (state), and child nodes are possible game actions.
 
@@ -102,7 +102,7 @@ The playing agent is provided :
 -  the static evaluation function
 
 
-### Game 1 : Tic-tac-toe:
+### Game 1 : Tic-tac-toe
    - Possible actions: players can place themselves in any empty space
    - The game ends if a player wins, or if there are no more empty spaces.
    - A player wins it has placed itself in three positions which are in a straight line.
@@ -114,7 +114,7 @@ Two playing agents will play a match against each other. Both player have no tim
 If time limits are introduced, players cannot evaluate all their moves, and will start making mistakes.
 
 
-### Game 2: Isolation:
+### Game 2: Isolation
   - Possible actions : For the first move, players can place themselves in any empty box. For further moves, players can move like a horse in chess. That is, players can move in $$(\pm2,\pm1),(\pm1,\pm2)$$
   - Condition to end game: The game ends if a player looses. A player looses if it has no places to move on the board.
   - Condition to win the game: A player wins the game if his opponent looses. 

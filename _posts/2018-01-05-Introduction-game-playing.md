@@ -8,25 +8,23 @@ title: How to teach a computer to play games
 <img src="{{ site.baseurl }}/images/GifTicTacToePerfectPlayersFast.gif" alt="TicTacToe" style="width: 300px;"/> </div>
 <br> 
 How can we teach a computer to play games? The first thing we need is a way to represent game states. *Trees* are common data structures used for *game representations*. Every node in a tree is a possible game board (state), and child nodes are possible game actions.
+<br>
 <div style="text-align: center;" style="margin:20px 50px 50px 50px">
 <img src="{{ site.baseurl }}/images/TicTacToeGameStateMove5.png" alt="gamestate" >
 </div>
-<div style="text-align:justify;">
-  The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board, or a board somewhere along the game. Consider two players denoted by  **$$P0$$ and $$P1$$**. In the figure above, the first player is trying to decide the fifth action of the game (his third action).  Suppose there are $$b_1$$ possible moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$P0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $$P1$$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. </div>
+  The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board, or a board somewhere along the game. Consider two players denoted by  **$$P0$$ and $$P1$$**. In the figure above, the first player is trying to decide the fifth action of the game (his third action).  Suppose there are $$b_1$$ possible moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$P0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $$P1$$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. 
   
   
 ### <a name="minimax">Minimax algorithm</a>: 
-<div style="text-align:justify;">
-Once all the possible game states have been *played to end game*, it is possible to see some branches lead to $$P0$$ winning the game. How can the information about the outcome of the game be propagated up to the first depth of the tree to choose a first action? This is where we make use of the minimax algorithm. 
+  Once all the possible game states have been *played to end game*, it is possible to see some branches lead to $$P0$$ winning the game. How can the information about the outcome of the game be propagated up to the first depth of the tree to choose a first action? This is where we make use of the minimax algorithm. 
 
   If the game end resulted in a failure for player $$P0$$, a value of  $$v=-\infty$$ (for example) is assigned to that leaf, as shown in the leftmost branch of the figure. On the contrary, if the game end resulted in a win for player $$P0$$ a value of $$v=+\infty$$ is assigned to that leaf. If at a certain depth the player has not won or lost, and [we cannot explore deeper possibilities](#DLS), then a [score is assigned to the board](#Static). The values $$v$$ of each leaf are then *propagated up the tree*,  by selecting the minimum/maximum (*mini-max*) value among the child nodes, at each node moving up the tree, until we reach the root. Moving up the tree with mini-max ensures that $$P0$$ chooses a branch that maximizes his outcome and $$P1$$ chooses a branch that minimizes the outcome of his opponent.  When we reach the root, $$P0$$ will know which is(are) the first best move(s) of the branches he analyzed. There are great tutorials and lectures out there. [This blog has a long clear tic-tac-toe example.](https://www.neverstopbuilding.com/blog/2013/12/13/tic-tac-toe-understanding-the-minimax-algorithm13/) .
 
-  A *first* approach in creating a game playing agent, is to create a tree with all possible moves and use the minimax algorithm to determine which action to take at each level. This requires to *visit all nodes in a tree*. How many nodes are there for a tree with a specific depth and branching factor ? <div>
+  A *first* approach in creating a game playing agent, is to create a tree with all possible moves and use the minimax algorithm to determine which action to take at each level. This requires to *visit all nodes in a tree*. How many nodes are there for a tree with a specific depth and branching factor ?
 
 
 ### <a name="abcde">Nodes in a tree </a>:
-<div style="text-align:justify">
-Imagine a tree with a branching factor of $b=3$. At level zero there is one node. At level 1, $$3$$ nodes are added. At level two, $$9$$ nodes are added. The sum of all nodes in a tree is
+  Imagine a tree with a branching factor of $b=3$. At level zero there is one node. At level 1, $$3$$ nodes are added. At level two, $$9$$ nodes are added. The sum of all nodes in a tree is
 
 $$
 \begin{equation}
@@ -49,7 +47,7 @@ $$S_d = \frac{3^{d+1}-1}{2}.$$
 
 $$S_d = \frac{b^{d+1}-1}{b-1}.$$
 
-  Searching for a good gaming strategy can rarely be done by brute force by visiting all the nodes, because we can see that the *number of nodes grows exponentially with the depth* of the tree ($$O(S^d) = b^d$$). Therefore, we have to *limit the depth* of the search. </div>
+  Searching for a good gaming strategy can rarely be done by brute force by visiting all the nodes, because we can see that the *number of nodes grows exponentially with the depth* of the tree ($$O(S^d) = b^d$$). Therefore, we have to *limit the depth* of the search. 
 
 ### <a name="DLS"> Depth limited search: </a>
 The number of nodes to be visited is of the order of  $$n = b^d$$  where $$b$$ is the branching factor and  $$d$$ is the depth.  Assume a computer can perform $$ T_0 = 10^9 $$ operations per second, or can visit $$10^9$$ nodes per second. If the maximum time searching for a next move is  $$T = k T_0 $$ , then   $$ b^d <  T $$. Therefore, the maximum depth that can be searched in this time is $$d < \frac{\log_{10} T}{\log_{10}{b}}.$$

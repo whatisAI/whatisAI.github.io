@@ -4,6 +4,9 @@ title: How to teach a computer to play games
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
+<img src="{{ site.baseurl }}/images/GifTicTacToePerfectPlayersFast.gif" alt="Drawing" style="width: 400px;"/>
+
+
 How can we teach a computer to play games? The first thing we need is a way to represent game states. *Trees* are common data structures used for *game representations*. Every node in a tree is a possible game board (state), and child nodes are possible game actions.
 
 
@@ -108,8 +111,6 @@ Two playing agents will play a match against each other. Both player have no tim
 
 ![TicTacToe]({{ site.baseurl }}/images/GifTicTacToePerfectPlayersFast.gif)
 
-<img src="{{ site.baseurl }}/images/GifTicTacToePerfectPlayers.gif" alt="Drawing" style="width: 200px;"/>
-
 If time limits are introduced, players cannot evaluate all their moves, and will start making mistakes.
 
 
@@ -128,4 +129,4 @@ Watch a match with restrictive time limit, on a $$7$$x$$7$$ board:
 
 # More games....
 
-[Check out the 2016 Nature article on AlphaGo.](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf)
+Check out the [2016 Nature article on AlphaGo.](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf)

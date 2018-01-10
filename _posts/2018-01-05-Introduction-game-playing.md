@@ -8,9 +8,9 @@ title: How to teach a computer to play games
 <img src="{{ site.baseurl }}/images/GifTicTacToePerfectPlayersFast.gif" alt="TicTacToe" style="width: 300px;"/> </div>
 <br> 
 How can we teach a computer to play games? The first thing we need is a way to represent game states. *Trees* are common data structures used for *game representations*. Every node in a tree is a possible game board (state), and child nodes are possible game actions.
-<p>
-<img src="{{ site.baseurl }}/images/TicTacToeGameStateMove5.png" alt="gamestate" style="margin:20px 20px 20px 20px">
-</p>
+<div style="text-align: center;">
+<img src="{{ site.baseurl }}/images/TicTacToeGameStateMove5.png" alt="gamestate" style="margin:20px 40px 20px 20px">
+</div>
   The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board, or a board somewhere along the game. Consider two players denoted by  **$$P0$$ and $$P1$$**. In the figure above, the first player is trying to decide the fifth action of the game (his third action).  Suppose there are $$b_1$$ possible moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$P0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $$P1$$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. 
   
   

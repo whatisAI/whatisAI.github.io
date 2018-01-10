@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introduction to Game Playing
+title: How to teach a computer to play games
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
@@ -22,7 +22,7 @@ Once all the possible game states have been *played to end game*, it is possible
 
 
 ### <a name="abcde">Nodes in a tree </a>:
-Imagine a tree with a branching factor of $b=3$. At level zero there is one node. At level 1, $3$ nodes are added. At level two, $9$ nodes are added. The sum of all nodes in a tree is
+Imagine a tree with a branching factor of $b=3$. At level zero there is one node. At level 1, $$3$$ nodes are added. At level two, $$9$$ nodes are added. The sum of all nodes in a tree is
 
 $$
 \begin{equation}
@@ -102,11 +102,13 @@ The playing agent is provided :
 ### Game 1 : Tic-tac-toe:
    - Possible actions: players can place themselves in any empty space
    - The game ends if a player wins, or if there are no more empty spaces.
-   - A player wins it has placed itself in three positions wich are in a straight line.
+   - A player wins it has placed itself in three positions which are in a straight line.
 
 Two playing agents will play a match against each other. Both player have no time limit, and will choose one of the best moves for them. Since both players are using minimax to evaluate their best move, there is always a tie. Watch them play:
 
-![TicTacToe]({{ site.baseurl }}/images/GifTicTacToePerfectPlayers.gif)
+![TicTacToe]({{ site.baseurl }}/images/GifTicTacToePerfectPlayersFast.gif)
+
+<img src="{{ site.baseurl }}/images/GifTicTacToePerfectPlayers.gif" alt="Drawing" style="width: 200px;"/>
 
 If time limits are introduced, players cannot evaluate all their moves, and will start making mistakes.
 
@@ -126,4 +128,4 @@ Watch a match with restrictive time limit, on a $$7$$x$$7$$ board:
 
 # More games....
 
-[2016 Nature article on AlphaGo.](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf)
+[Check out the 2016 Nature article on AlphaGo.](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf)

@@ -12,7 +12,7 @@ How can we teach a computer to play games? The first thing we need is a way to r
 <div style="text-align: center;" style="margin:50px 50px 50px 50px">
 <img src="{{ site.baseurl }}/images/TicTacToeGameStateMove5.png" alt="gamestate" >
 </div>
-  The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board, or a board somewhere along the game. Consider two players denoted by  **$$P0$$ and $$P1$$**. In the figure above, the first player is trying to decide the fifth action of the game (his third action).  Suppose there are $$b_1$$ possible moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$P0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $$P1$$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. 
+  The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board, or a board somewhere along the game. Consider two players denoted by  **$$P0$$** and **$$P1$$**. In the figure above, the first player is trying to decide the fifth action of the game (his third action).  Suppose there are $$b_1$$ possible moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$P0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $$P1$$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. 
   
   
 ### <a name="minimax">Minimax algorithm</a>: 
@@ -24,7 +24,7 @@ How can we teach a computer to play games? The first thing we need is a way to r
 
 
 ### <a name="abcde">Nodes in a tree </a>:
-  Imagine a tree with a branching factor of $b=3$. At level zero there is one node. At level 1, $$3$$ nodes are added. At level two, $$9$$ nodes are added. The sum of all nodes in a tree is
+  Imagine a tree with a branching factor of $$b=3$$. At level zero there is one node. At level 1, $$3$$ nodes are added. At level two, $$9$$ nodes are added. The sum of all nodes in a tree is
 
 $$
 \begin{equation}
@@ -102,11 +102,11 @@ The playing agent is provided :
 
 
 ### Game 1 : Tic-tac-toe
-   - Possible actions: players can place themselves in any empty space
+   - Possible actions: players can place themselves in any empty space.
    - The game ends if a player wins, or if there are no more empty spaces.
-   - A player wins it has placed itself in three positions which are in a straight line.
+   - A player wins if it has placed itself in three positions which are in a straight line.
 
-Two playing agents will play a match against each other. Both player have no time limit, and will choose one of the best moves for them. Since both players are using minimax to evaluate their best move, there is always a tie. Watch them play:
+Two playing agents will play a match against each other. Both players have no time limit, and will choose one of the best moves for them. Since both players are using minimax to evaluate their best move, there is always a tie. Watch them play:
 
 ![TicTacToe]({{ site.baseurl }}/images/GifTicTacToePerfectPlayersFast.gif)
 
@@ -114,12 +114,14 @@ If time limits are introduced, players cannot evaluate all their moves, and will
 
 
 ### Game 2: Isolation
-  - Possible actions : For the first move, players can place themselves in any empty box. For further moves, players can move like a horse in chess. That is, players can move in $$(\pm2,\pm1),(\pm1,\pm2)$$
+  - Possible actions : For the first move, players can place themselves in any empty box. For further moves, players can move like a horse in chess. That is, players can move in $$(\pm2,\pm1)$$ or $$(\pm1,\pm2)$$
   - Condition to end game: The game ends if a player looses. A player looses if it has no places to move on the board.
   - Condition to win the game: A player wins the game if his opponent looses. 
 <br>
+<br>
 Watch a match with restrictive time limit, on a $$5$$x$$5$$ board:
 ![Isolation55]({{ site.baseurl }}/images/GifIsolation5x5heuristic2-2018-28-06-17-28-52.gif)
+<br>
 <br>
 Watch a match with restrictive time limit, on a $$7$$x$$7$$ board:
 ![Isolation77]({{ site.baseurl }}/images/GifIsolation7x7heuristic2.gif)

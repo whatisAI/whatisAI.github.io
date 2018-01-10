@@ -3,16 +3,14 @@ layout: post
 title: How to teach a computer to play games
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-
+<p></p>
 <div style="text-align: center;">
-<img src="{{ site.baseurl }}/images/GifTicTacToePerfectPlayersFast.gif" alt="Drawing" style="width: 300px;"/> </div>
-
+<img src="{{ site.baseurl }}/images/GifTicTacToePerfectPlayersFast.gif" alt="TicTacToe" style="width: 300px;"/> </div>
+<p></p>
 How can we teach a computer to play games? The first thing we need is a way to represent game states. *Trees* are common data structures used for *game representations*. Every node in a tree is a possible game board (state), and child nodes are possible game actions.
-
-
+<p></p>
 ![TicTacToeGameState]({{ site.baseurl }}/images/TicTacToeGameStateMove5.png)
-
-
+<p></p>
   The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board, or a board somewhere along the game. Consider two players denoted by  **$$P0$$ and $$P1$$**. In the figure above, the first player is trying to decide the fifth action of the game (his third action).  Suppose there are $$b_1$$ possible moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$P0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $$P1$$ winning is being maximized, then minimized, in an alternating fashion. The game tree is visitied using breath first search, meaning  the algorithm searches a leaf node, evaluates it, backtracks to its parent node, and visits other children. 
   
   
@@ -118,10 +116,10 @@ If time limits are introduced, players cannot evaluate all their moves, and will
   - Possible actions : For the first move, players can place themselves in any empty box. For further moves, players can move like a horse in chess. That is, players can move in $$(\pm2,\pm1),(\pm1,\pm2)$$
   - Condition to end game: The game ends if a player looses. A player looses if it has no places to move on the board.
   - Condition to win the game: A player wins the game if his opponent looses. 
-
+<p></p>
 Watch a match with restrictive time limit, on a $$5$$x$$5$$ board:
 ![Isolation55]({{ site.baseurl }}/images/GifIsolation5x5heuristic2-2018-28-06-17-28-52.gif)
-
+<p></p>
 Watch a match with restrictive time limit, on a $$7$$x$$7$$ board:
 ![Isolation77]({{ site.baseurl }}/images/GifIsolation7x7heuristic2.gif)
 

@@ -17,8 +17,8 @@ How can we teach a computer to play games? The first thing we need is a way to r
 </div>
 
   The root of a tree is the representation of the initial game state. The intial state could be, for example, an empty board, or a board somewhere along the game. Consider two players denoted by  **$$P0$$** and **$$P1$$**. In the figure above, the first player is trying to decide the fifth action of the game (his third action).  Suppose there are $$b_1$$ possible moves for player $$P0$$. The first level of a tree will contain $$b_1$$ nodes (possible actions), and player $$P0$$ will try to **maximize** his chance of winning with that action. For each node $$b_1$$,  $$P1$$ has, for example,  $$b_2$$ possible actions. In the next game turn, at level 2, player $$P1$$ will try to **minimize** the chance of $$P0$$ winning. As we move down the tree, taking turns between player $$P1$$ and player $$P2$$, the function that evalutes the probablity of player $$P1$$ winning is being maximized, then minimized, in an alternating fashion
-  
-  
+
+
 ### <a name="minimax">Minimax algorithm</a>: 
   Once all the possible game states have been *played to end game*, it is possible to see some branches lead to $$P0$$ winning the game. How can the information about the outcome of the game be propagated up to the first depth of the tree to choose a first action? This is where we make use of the minimax algorithm. 
 
@@ -92,11 +92,10 @@ At level $$d$$, the algorithm has to assume each node is a leaf, and score each 
 
     - **Post-order**: Traverse the tree and find the leftmost child and print it. Backtrack. Traverse the tree to the rightmost child and print.  Backtrack and print it.
 
-      
 
 # Let's play
 
-Let's use [minimax](#minimax) and [iterative deepening](#ID) to create two agents to play matches against each other. I am also using alpha-beta pruning which is a way to discard  some branches when exploring to save some computational time. The game tree is visited using depth first search. When using iterative deepening, however, the search is more similar to breadth first search. 
+Let's use [minimax](#minimax) and [iterative deepening](#ID) to create two agents to play matches against each other. I am also using <a href="https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning">alpha-beta pruning</a> which is a way to discard exploring some branches to save some computational time (<a href="https://www.youtube.com/watch?v=J1GoI5WHBto&t=1946s">example 1</a> and <a href="https://www.youtube.com/watch?v=STjW3eH0Cik">2</a>). The game tree is visited using depth first search. When using iterative deepening, however, the search is more similar to breadth first search. 
 
 We willl play games where we have complete information.
 
@@ -123,14 +122,14 @@ If time limits are introduced, players cannot evaluate all their moves, and will
   - Possible actions : For the first move, players can place themselves in any empty box. For further moves, players can move like a horse in chess. That is, players can move in $$(\pm2,\pm1)$$ or $$(\pm1,\pm2)$$
   - Condition to end game: The game ends if a player looses. A player looses if it has no places to move on the board.
   - Condition to win the game: A player wins the game if his opponent looses. 
-<br>
-<br>
-Watch a match with restrictive time limit, on a $$5$$x$$5$$ board:
-![Isolation55]({{ site.baseurl }}/images/GifIsolation5x5heuristic2-2018-28-06-17-28-52.gif)
-<br>
-<br>
-Watch a match with restrictive time limit, on a $$7$$x$$7$$ board:
-![Isolation77]({{ site.baseurl }}/images/GifIsolation7x7heuristic2.gif)
+  <br>
+  <br>
+  Watch a match with restrictive time limit, on a $$5$$x$$5$$ board:
+  ![Isolation55]({{ site.baseurl }}/images/GifIsolation5x5heuristic2-2018-28-06-17-28-52.gif)
+  <br>
+  <br>
+  Watch a match with restrictive time limit, on a $$7$$x$$7$$ board:
+  ![Isolation77]({{ site.baseurl }}/images/GifIsolation7x7heuristic2.gif)
 
 
 

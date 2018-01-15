@@ -14,15 +14,15 @@ I have undergraduate degrees in **electronic engineering** and **physics**, a **
 
 - [Mitigating Simultaneous Source Interference with a Robust Imaging Condition.](http://earthdoc.eage.org/publication/publicationdetails/?publication=88593) Fletcher, R. P., Castellanos, C., Moore, I., & Beasley, C.  (2017). In *79th EAGE Conference and Exhibition 2017*.
 
-- [Removing simultaneous source crosstalk with reverse time migration.](https://library.seg.org/doi/abs/10.1190/segam2016-13859255.1) Castellanos, C., Fletcher, R., Moore, I., and Beasley, C. (2016). SEG Technical Program Expanded Abstracts 2016, 4305-4309
+- [Removing simultaneous source crosstalk with reverse time migration.](https://library.seg.org/doi/abs/10.1190/segam2016-13859255.1) Castellanos, C., Fletcher, R., Moore, I., and Beasley, C. (2016). SEG Technical Program Expanded Abstracts 2016, 4305-4309.
 
-- [Data studies of simultaneous source separation using robust linear algebra.](https://library.seg.org/doi/abs/10.1190/segam2016-13779503.1) Moore, I., Beasley, C., Fletcher, R., and Castellanos, C. (2016) .  SEG Technical Program Expanded Abstracts 2016, 4623-4627 
+- [Data studies of simultaneous source separation using robust linear algebra.](https://library.seg.org/doi/abs/10.1190/segam2016-13779503.1) Moore, I., Beasley, C., Fletcher, R., and Castellanos, C. (2016) .  SEG Technical Program Expanded Abstracts 2016, 4623-4627. 
 
 - [Simultaneous source separation using adaptive robust linear algebra.](http://earthdoc.eage.org/publication/publicationdetails/?publication=85197) Beasley, C., Moore, I., Fletcher, R., and Castellanos, C. (2016) . EAGE annual meeting.
 
 - [Slanted Cable Marine Acquisition and Wave-Equation Receiver Deghosting.](https://library.seg.org/doi/abs/10.1190/segam2015-5901548.1) Beasley, Craig J., Richard T. Coates, Pearl Flath, and Clara Castellanos. (2015). SEG Annual Meeting. Society of Exploration Geophysicists.
 
-- [Fast Full Waveform Inversion and Second Order Optimization Methods.](https://academic.oup.com/gji/article-abstract/200/2/720/608383?redirectedFrom=fulltext) C. Castellanos, L. Metivier, S. Operto, and R. Brossier. (2015). Geophysical Journal International. Vol 200
+- [Fast Full Waveform Inversion and Second Order Optimization Methods.](https://academic.oup.com/gji/article-abstract/200/2/720/608383?redirectedFrom=fulltext) C. Castellanos, L. Metivier, S. Operto, and R. Brossier. (2015). Geophysical Journal International. Vol 200.
 
 - [Fast Full Waveform Inversion with Source Encoding and Second Order Optimization Methods.](http://www.earthdoc.org/publication/publicationdetails/?publication=68634) C. Castellanos, L. Metivier, S. Operto, and R. Brossier. (2013). Expanded Abstracts, 75th Annual EAGE Conference and  Exhibition, London. EAGE. 
 

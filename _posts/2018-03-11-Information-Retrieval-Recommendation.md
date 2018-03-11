@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Text advertisement clustering with K-means 
+title: Document classification with K-means 
 ---
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 
-## An example of job advertisement unsupervised classification. 
+## An example of job advertisement unsupervised classification using K-means. 
 
 *Keywords*: Information retrieval, clustering, recommendations, Tf-IDF, classification
 

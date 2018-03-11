@@ -49,12 +49,11 @@ In Python, the *scikit-learn* package has bag-of-words feature extraction method
 K-means is a clustering algorithm that assigns a cluster label $$l_j$$ to each document $$d_i$$. This labelling is known as a hard assignment, as each document belongs to only one label $$j$$. 
 
 
-
 Each cluster is characterised by :
 
 - a centroid $$c_i$$
 
-- the shape of each cluster in the feature space. 
+- the shape of each cluster in the feature space (The vanilla K-means, will assume all cluster are symmetrical in all dimensions). 
 
 Denote $$z_j$$ the cluster labels, $$c_j$$ the cluster centres, and $$x_i$$ the observations.  
 
@@ -134,7 +133,7 @@ I decided to cluster the job advertisements, and depending on the most important
 
 Query the job advertisement aggregator, such as Indeed, for the jobs you are interested in, in a specific city, sorted by date (most recent first). Read all the job advertisements and create a corpus. 
 
-For the first step, I used what was done in [this great notebook](https://jessesw.com/Data-Science-Skills/ ), and only did some minor tweaks to sort by date. The main parts to read contents from a website:
+For the first step, I used what was done in [this great notebook](https://jessesw.com/Data-Science-Skills/ ), and only did some minor tweaks to sort by date. The main parts are to read contents from a website:
 
 ```python
 site = urllib.request.urlopen(website).read()
@@ -271,11 +270,13 @@ Which can be summarised as:
 
 
 
-- The number of clusters has been arbitrarily chosen here. Feel free to increase or decrease them, according to the level of granularity you are looking for. 
+- The number of clusters has been arbitrarily chosen here. Feel free to increase or decrease them, according to the level of granularity you are looking for. When plotting the misfit $$\phi \ Vs.  k $$,  it will typically resemble an L-curve. The $k$ where the curve bends is usually a good tradeoff between reducing $$\phi$$ and keeping the number of clusters small.
 
 - Remember that every time you run k-means you will get a different clustering result. 
 
 - This classification is far from perfect. As long as removing stop words, I removed some common names of recruiters, or words that appear in job offerings from some groups, but that remain un-informative. For example, some job offerings explain benefits, other don't. Either way, this word is not important in our classification, so I remove it. A lot more can be done in this sense. 
+
+- K-means clustering assumes all clusters are symetrically in all dimensions (all features have the same spread). This is not necessarily true, or a good approximation. In the next post we will see how to improve on this.
 
 - A **probabilistic labelling** makes more sense in this example. Some job offerings may intersect two categories. This will be the topic of the next post. 
 

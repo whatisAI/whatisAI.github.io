@@ -53,7 +53,7 @@ Each cluster is characterised by :
 
 - a centroid $$c_i$$
 
-- the shape of each cluster in the feature space (The vanilla K-means, will assume all cluster are symmetrical in all dimensions). 
+- the shape of each cluster in the feature space (The vanilla K-means, will assume all clusters are symmetrical in all dimensions). 
 
 Denote $$z_j$$ the cluster labels, $$c_j$$ the cluster centres, and $$x_i$$ the observations.  
 
@@ -276,7 +276,7 @@ Which can be summarised as:
 
 - This classification is far from perfect. As long as removing stop words, I removed some common names of recruiters, or words that appear in job offerings from some groups, but that remain un-informative. For example, some job offerings explain benefits, other don't. Either way, this word is not important in our classification, so I remove it. A lot more can be done in this sense. 
 
-- K-means clustering assumes all clusters are symetrically in all dimensions (all features have the same spread). This is not necessarily true, or a good approximation. In the next post we will see how to improve on this.
+- K-means clustering assumes all clusters are symetrical in all dimensions (all features have the same spread). This is not necessarily true, or a good approximation. In the next post we will see how to improve on this.
 
 - A **probabilistic labelling** makes more sense in this example. Some job offerings may intersect two categories. This will be the topic of the next post. 
 

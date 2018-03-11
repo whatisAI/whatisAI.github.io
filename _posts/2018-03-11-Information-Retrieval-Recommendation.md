@@ -61,7 +61,6 @@ $$
 \phi =  \sum_{j=1}^k \sum_{x_i \in C( z_j)} d(x_i, c_j)
 $$
 
-
 Algorithm:
 
 1. Initialize cluster centres. 
@@ -77,10 +76,15 @@ Algorithm:
    2. Update the cluster centers with the observations assigned in previous step. 
 
       ​	$$ \mu_j = \frac{1}{n_j} \sum_{x_i \in C( z_j)} x_i $$
+      
 
 
 
-Because the k-means objective function is not convex, we are never guaranteed to find the global optimum. K-means will converge to a local optimum and, as any iterative optimization of a non-convex  function, the value we converge to will depend on the initial values of the cluster centres. This gives rise to k-means++, which is the same as k-means, but with a smart cluster initialisation.  
+
+
+Because the k-means objective function is not convex, we are never guaranteed to find the global optimum. K-means will converge to a local optimum and, as any iterative optimization of a non-convex  function, the value we converge to will depend on the initial values of the cluster centres. This gives rise to **k-means++**, which is the same as k-means, but with a smart cluster initialisation.  
+
+
 
 The algorithm for cluster center initialisation is as follows:
 
@@ -95,6 +99,8 @@ The algorithm for cluster center initialisation is as follows:
       ​           if $$d(x_i,c_j)<b_i$$ then $$b_i = d(x_i,c_j) $$ 
 
    2. Choose a new cluster center with probability proportional to $$b_i^2$$, to favour choosing a cluster center away from other clusters.
+
+      ​
 
 
 

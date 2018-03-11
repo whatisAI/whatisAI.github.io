@@ -12,7 +12,7 @@ title: Document classification with K-means
 
 Imagine a user reading a book description, reading job advertisings, or looking at images of houses. We would like to recommend similar books, jobs or houses. Formally, we want to have a structured representation of our data, where we can easily navigate the feature space and find neighbouring points to be used as suggestions. 
 
-If you are familiar with text represantation and K-means, and are more interested in the job adverstiment classification with k-means, jump directly to the [example](#JobExample).
+If you are familiar with text represantation and K-means, and are more interested in the [job adverstiment classification with k-means](#JobExample), jump directly to the [example](#JobExample).
 
 
 

@@ -18,11 +18,15 @@ If you are familiar with text represantation and K-means, and are more intereste
 
 ## Clustering and unsupervised classification 
 
-The goal of clustering is to discover groups of data that share similar features. For example, you want to find job descriptions that are similar to a description you already read. The job classification labels may not be available or may be to broad (scientist, manager, etc), and therefore useless when you want to find similar jobs. We want to structure the data (job descriptions) in our database, so that we can suggest other jobs. Moreover, in the presence of feedback, we can use it to learn preferences. 
+<p align="left|right|center|justify">
+
+The goal of clustering is to discover groups of data that share similar features. For example, you want to find job descriptions that are similar to a description you already read. The job classification labels may not be available or may be to broad (scientist, manager, etc), and therefore useless when you want to find similar jobs. We want to structure the data (job descriptions) in our database, so that we can suggest other jobs. Moreover, in the presence of feedback, we can use it to learn preferences.  </p>
 
 
 
-Looking for similar features in a dataset can be done with KD-Trees or K-nearest neighbours, for example. Clustering can be done with K-means, LDA, among others. I will cover only one deterministic clustering technique (K-means ) and one probabilistic clustering technique (LDA).
+<p align="left|right|center|justify">
+
+Looking for similar features in a dataset can be done with KD-Trees or K-nearest neighbours, for example. Clustering can be done with K-means, LDA, among others. I will cover only one deterministic clustering technique (K-means ) and one probabilistic clustering technique (LDA). </p>
 
 
 

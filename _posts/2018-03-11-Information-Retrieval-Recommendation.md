@@ -1,7 +1,8 @@
 ---
 layout: post
-title: Clustering with K-means: an example of job advertisement unsupervised classification
+title: Job advertisement clustering with K-means 
 ---
+
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 

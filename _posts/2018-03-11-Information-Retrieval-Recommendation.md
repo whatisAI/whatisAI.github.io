@@ -18,9 +18,9 @@ If you are familiar with text represantation and K-means, and are more intereste
 
 ## Clustering and unsupervised classification 
 
-<p align="left|right|center|justify">
 
-The goal of clustering is to discover groups of data that share similar features. For example, you want to find job descriptions that are similar to a description you already read. The job classification labels may not be available or may be to broad (scientist, manager, etc), and therefore useless when you want to find similar jobs. We want to structure the data (job descriptions) in our database, so that we can suggest other jobs. Moreover, in the presence of feedback, we can use it to learn preferences.  </p>
+
+<div align="left|right|center|justify">The goal of clustering is to discover groups of data that share similar features. For example, you want to find job descriptions that are similar to a description you already read. The job classification labels may not be available or may be to broad (scientist, manager, etc), and therefore useless when you want to find similar jobs. We want to structure the data (job descriptions) in our database, so that we can suggest other jobs. Moreover, in the presence of feedback, we can use it to learn preferences.  </div>
 
 
 

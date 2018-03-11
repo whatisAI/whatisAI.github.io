@@ -132,13 +132,15 @@ I decided to cluster the job advertisements, and depending on the most important
 Query the job advertisement aggregator, such as Indeed, for the jobs you are interested in, in a specific city, sorted by date (most recent first). Read all the job advertisements and create a corpus. 
 
 For the first step, I used what was done in [this great notebook](https://jessesw.com/Data-Science-Skills/ ), and only did some minor tweaks to sort by date. The main parts to read contents from a website:
+
 ```python
 site = urllib.request.urlopen(website).read()
 ```
+
 and use the package *BeautifulSoup* to extract html from the site:
+
 ```python
 soup_obj = BeautifulSoup(site, "lxml")
-
 ```
 
 ## <a name="step2"> Step 2: Feature extraction </a>
@@ -146,7 +148,7 @@ soup_obj = BeautifulSoup(site, "lxml")
 Do a little pre-processing: tokenise, remove stop-words and words in the indeed webpage by default, use TF-IDF to create the feature representation. 
 
 
-```
+```python
 def create_features(corpus, nmin=1,nmax=3,nfeat=5000):    
     vectorizer = TfidfVectorizer(ngram_range=(nmin,nmax), min_df = 1, 
                                  sublinear_tf = True, max_features = nfeat)
@@ -158,7 +160,7 @@ def create_features(corpus, nmin=1,nmax=3,nfeat=5000):
 
 K-means clustering call.  Specify the k-means++ initialization, number of cluster and maximum number of iterations.  For large datasets, and to make k-means scalable, Clustering can be done in batches. The two methods will not converge to the same results. In this case, because we do not have a large dataset, we do not need to use batches.
 
-```
+```python
 def do_clustering(some_features,true_k=2, do_svd=0):
     kmeans_minibatch = 0
     if kmeans_minibatch:
@@ -177,7 +179,7 @@ def do_clustering(some_features,true_k=2, do_svd=0):
 
 For each cluster center, which can be accessed in *km.__dict__['cluster_centers_']*, we can look at the features that have the highest weights:
 
-```
+```python
 def importance_features(feat_names, km, perc=99.9):
     res=km.__dict__
     for iclass in set(km.labels_):
@@ -195,7 +197,7 @@ For example, searching for jobs as **data scientist** the clusters, have the fol
 
 
 
-```
+```python
 ****** 
 Important features for class  0
 analyst                       

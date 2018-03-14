@@ -124,7 +124,12 @@ To go through the clustering algorithm using a Gaussian Mixture Model, let's fir
 
 We have $$N=40$$ points, in two dimensions, and we would like to find and underlying structure with $$k=3$$ clusters. 
 
-![GMM_data](https://github.com/whatisAI/whatisAI.github.io/blob/master/images/GMM_data.png)
+
+
+<div style="text-align: center;" style="margin:50px 50px 50px 50px">
+<img src="{{ site.baseurl }}/images/GMM_data.png" alt="points" >
+</div>
+
 
 We will:
 
@@ -210,9 +215,8 @@ y_prob = estimator.predict_proba(x)
 The clustering results are shown below. On the left is using the scikit function, and on the right the implementation from scratch sketched above. The colors indicate clusters, and the sizes are proportional to the certainty.  Both functions arrive to nearly same results always, although sometimes a few points may differ. The implementation without using scikit was mainly to test my understanding.
 
 
-
-![GMM_clustering](/Users/clcaste/Documents/WEBDEV/MLBLOG/whatisAI.github.io/images/GMM_clustering.jpg)
-
-
+<div style="text-align: center;" style="margin:50px 50px 50px 50px">
+<img src="{{ site.baseurl }}/images/GMM_clustering.jpg" alt="gamestate" >
+</div>
 
 We can now use [GMM to cluster the Indeed Jobs](https://github.com/whatisAI/Classification_Adds/blob/master/Indeed_JobClassification_GMM.ipynb) as we did previously using [Kmeans](https://whatisai.github.io/Information-Retrieval-Recommendation/).  The [notebook](https://github.com/whatisAI/Classification_Adds/blob/master/Indeed_JobClassification_GMM.ipynb) contains the details. 

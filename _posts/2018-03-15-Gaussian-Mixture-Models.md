@@ -5,10 +5,26 @@ title: Gaussian Mixture Models - a text classification example
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-## Gaussian Mixture Models
 *Keywords: Gaussian Mixture Models, GMM, cluster, Expectation-Maximization, EM*
 
+In a [previous post](https://whatisai.github.io/Information-Retrieval-Recommendation/), I went through job advertisements and clustered them using K-means to create groups of similar job advertisements. I looked at job advertisements for "data scientist", and K-means created clusters. Without any prior information, Kmeans recovered clusters with financial, health or developer focus. However, there are many advertisements that either do not have a clear focus, or may be an intersection of two or more clusters. 
 
+
+
+Clustering with Gaussian Mixture Models (GMM) allows to retrieve not only the label of the cluster for each point, but also the probability of each point belonging to each of the clusters, and a probabilty distribution that best explains the data. This has many practical advantages. In the job advertisement classification example, this allows to focus on the jobs in cluster $$i$$, but also to take into consideration job advertisements that belong primarily to another cluster, but still have a probability of belonging to cluster $$i$$.
+
+ 
+
+Gaussian Mixture Models are useful beyond clusering applications, and are a useful model fitting technique as it provides a probability distribution that best fits the data. The algorithm that allows to fit the model parameters is known as Expectation Maximization (EM). 
+
+
+
+After a short introduction to Gaussian Mixture Models (GMM), I will do a toy  2D example, where I [implement the EM](#EMalgo) algorithm from scratch and compare it to the the result obtained with the [GMM implemented in scikit](#GMMPython). 
+
+
+
+
+## Gaussian Mixture Models
 
 If we have a strong belief that the underlying distribution of univariate random variable $$x$$ is Gaussian, or a linear combination of Gaussians, the distribution can be expressed as a mixture of Gaussians:
 
@@ -23,10 +39,10 @@ $$
 where $$\pi$$ is a vector of probabilities, which provides the mixing proportions. In the multivariate case, 
 
 $$
-p(\vec{x}) = \sum_k \pi_k  \mathcal{N}\left( \vec{\mu}_k, \Sigma_k \right)
+p(\vec{x}) = \sum_k \pi_k  \mathcal{N}\left( \vec{\mu}_k, \Sigma_k \right),
 $$
 
-Where $$\vec{x} \in \mathcal{R}^N, \vec{\mu} \in \mathcal{R}^N,  \Sigma \in \mathcal{R}^N \times \mathcal{R}^N$$. The goal of modelling is to find (learn) the parameters of the GMM: weights, mean and covariance. The covariance matrix $$\Sigma$$ is symmetric positive definite and thus contains $$N(N+1)$$ free parameters. To reduce the number of parameters, the off diagonal terms may be set to zero, and only the variance in each dimension is fitted, reducing it to $$N$$ parameters. 
+where $$\vec{x} \in \mathcal{R}^N, \vec{\mu} \in \mathcal{R}^N,  \Sigma \in \mathcal{R}^N \times \mathcal{R}^N$$. The goal of modelling is to find (learn) the parameters of the GMM: weights, mean and covariance. The covariance matrix $$\Sigma$$ is symmetric positive definite and thus contains $$N(N+1)$$ free parameters. To reduce the number of parameters, the off diagonal terms may be set to zero, and only the variance in each dimension is fitted, reducing it to $$N$$ parameters. 
 
 
 ## Clustering using Gaussian Mixture Models
@@ -64,32 +80,35 @@ $$
 
 The **Expectation-Maximization (EM)** algorithm is used to iteratively update the model parameters and the  values of the latent variables (cluster labels). The two steps in the EM algorithm are repeated iteratively until convergence (i.e: no changes in responsibility vectors):  
 
+
+
 1. **Expectation step:** With the prior for the model parameters, we want to compute a posterior on the cluster probability for each point ( $$p(z_i = k \| x_i, \pi_k, \mu_k,\Sigma_k) $$)  sometimes also called **responsibility vector**. 
 
 
 
    Recalling Bayes Theorem,
-   
-   $$
+
+$$
    P(A|B,C) = \frac{P(B,C|A) P(A)}{P(B,C)} = \frac{P(B,C|A) P(A)}{\int_{A'}P(B,C|A') P(A')dA'},
-   $$
+$$
+
    
-   
-   
+
    we can use it to compute the posterior probability we are interested in:
-   
-   
-   $$
-   \begin{eqnarray}
-   p(z_i = k| x, \theta) &=& \frac{p(x,\theta |z_i = k) p(z_i = k)}{ \int_k' p(x,\theta |z_i = k') p(z_i = k') }\\
-   p(z_i = k| x, \theta)  &=& \gamma_{i,k} = \frac{\pi_k \mathcal{N}(\mu_k,\Sigma_k)  }{\sum_{k'} \pi_{k'} \mathcal{N}(\mu_{k'},\Sigma_{k'})}. \quad \quad \quad \quad (1)
+
+
+$$
+\begin{eqnarray}
+   p(z_i = k| x,\mu,\Sigma) &=& \frac{p(x,\mu,\Sigma |z_i = k) p(z_i = k)}{ \int_k' p(x,\mu,\Sigma |z_i = k') p(z_i = k') }\\
+   & & \\
+   p(z_i = k| x, \mu,\Sigma)  &=& \gamma_{i,k} = \frac{\pi_k \mathcal{N}(\mu_k,\Sigma_k)  }{\sum_{k'} \pi_{k'} \mathcal{N}(\mu_{k'},\Sigma_{k'})}. \quad \quad \quad \quad (1)
    \end{eqnarray}
-   $$
-    
-    
-    
+$$
+
+
+​    
    Note that $$ \gamma_{i,k} $$ denotes the probability that point $$x_i$$ belongs to cluster $$k$$. This allows to **quantify the incertitude on the cluster labelling**. For example, if there are 3 labels and $$\gamma_{i,k} = 1/3$$    means the labelling has a lot of incertitude.      
-   
+
 
 2. **Maximimzation step:** To find the optimal parameters $$\mu, \Sigma$$, we need to maximise the log-likelihood of $$p(x)$$. The log likelihood is:
 
@@ -97,6 +116,7 @@ The **Expectation-Maximization (EM)** algorithm is used to iteratively update th
 $$
 \begin{eqnarray}
 \log p(x) &=& \sum_i \log \sum_k p(x_i| z_i =k)p(z=k) \\
+   & & \\
 \mathcal{L}(\mu,\Sigma)&=&-\log p(x) =  -\sum_i \log \sum_k \pi_k \mathcal{N}(\mu_k, \Sigma_k) \\
 \end{eqnarray}
 $$
@@ -108,7 +128,9 @@ To maximize it, we need to find $$ \partial \mathcal{L} /\partial \mathcal{\mu} 
 $$
 \begin{eqnarray}
 \mu_k & = & \frac{1}{N_k}\sum_{i}^N \gamma_{i,k} x_i    \quad \quad  \quad  \quad   \quad  \quad  \quad   \quad  \quad  \quad  (2) \\
+   & & \\
 \Sigma_k &=& \frac{1}{N_k}\sum_{i}^N \gamma_{i,k} (x_i-\mu_k)^T (x_i-\mu_k)  \quad \quad \quad \quad  (3) \\
+   & & \\
 \pi_k &=& \frac{N_k}{N} \quad \quad  \quad  \quad   \quad  \quad  \quad   \quad  \quad  \quad  \quad  \quad  \quad  (4)
 \end{eqnarray}
 $$
@@ -125,7 +147,7 @@ $$
 
 To go through the clustering algorithm using a Gaussian Mixture Model, let's first do a toy example with two dimensions. Afterwards, we will use GMM to cluster the Indeed job advertisements.  
 
-### Gaussian Mixture Model : a toy example.
+### <a name="EMalgo" >Gaussian Mixture Model : a toy example. </a>
 
 We have $$N=40$$ points, in two dimensions, and we would like to find and underlying structure with $$k=3$$ clusters. 
 
@@ -202,7 +224,7 @@ hard_labels = np.argmax(Postz, axis=1)
 
 
 
-### GMM in Python with sklearn
+###  <a name="GMMPython" >GMM in Python with sklearn </a>
 
 The [sklearn.mixture](http://scikit-learn.org/stable/modules/mixture.html) package allows to learn Gaussian Mixture Models, and has several options to control how many parameters to include in the covariance matrix (diagonal, spherical, tied and full covariance matrices supported). **sklearn.mixture.GaussianMixture** uses Expectation-Minimization as previously explained.  Using this function, the clustering with GMM is simply:
 

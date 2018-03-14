@@ -85,11 +85,10 @@ The **Expectation-Maximization (EM)** algorithm is used to iteratively update th
 1. **Expectation step:** With the prior for the model parameters, we want to compute a posterior on the cluster probability for each point ( $$p(z_i = k \| x_i, \pi_k, \mu_k,\Sigma_k) $$)  sometimes also called **responsibility vector**. 
 
 
-
    Recalling Bayes Theorem,
 
 $$
-   P(A|B,C) = \frac{P(B,C|A) P(A)}{P(B,C)} = \frac{P(B,C|A) P(A)}{\int_{A'}P(B,C|A') P(A')dA'},
+P(A|B,C) = \frac{P(B,C|A) P(A)}{P(B,C)} = \frac{P(B,C|A) P(A)}{\int_{A'}P(B,C|A') P(A')dA'},
 $$
 
    
@@ -183,30 +182,28 @@ def compute_post(m,k,x,mu,sigma, prior_cl):
 
 2. In the maximization step, we update the parameters of the GMM
 
-   ```python
-   def update_params(m,k,x,mu,sigma, PostZ):
-       # 1. Update priors
-       for ik in range(k): 
-           prior_cl[ik] = np.mean(PostZ[:,ik])
+```python
+def update_params(m,k,x,mu,sigma, PostZ):
+    # 1. Update priors
+    for ik in range(k): 
+        prior_cl[ik] = np.mean(PostZ[:,ik])
 
-       if (abs(sum(prior_cl)-1) >0.001) : 
-           print('Something went wrong: priors dont sum to one')
+    if (abs(sum(prior_cl)-1) >0.001) : 
+        print('Something went wrong: priors dont sum to one')
 
-       #2. Update mean
-       nk = [0 for i in range(k)]
-       for ik in range(k): #Update mean of each cluster : weighted average
-           nk[ik] = np.sum(PostZ[:,ik])
-           mu[ik] = np.sum(np.reshape(PostZ[:,ik],[len(x),1])*np.array(x), axis=0)/nk[ik]
-           #print(mu[ik])
+    #2. Update mean
+    nk = [0 for i in range(k)]
+    for ik in range(k): #Update mean of each cluster : weighted average
+        nk[ik] = np.sum(PostZ[:,ik])
+        mu[ik] = np.sum(np.reshape(PostZ[:,ik],[len(x),1])*np.array(x), axis=0)/nk[ik]
+        #print(mu[ik])
 
-       #3. Update Variance 
-       for ik in range(k):
-           sigma[ik][0,0],sigma[ik][1,1]= np.sum(np.reshape(PostZ[:,ik],[len(x),1])*(np.array(x)-mu[ik])*(np.array(x)-mu[ik]),axis=0)/nk[ik]
+    #3. Update Variance 
+    for ik in range(k):
+        sigma[ik][0,0],sigma[ik][1,1]= np.sum(np.reshape(PostZ[:,ik],[len(x),1])*(np.array(x)-mu[ik])*(np.array(x)-mu[ik]),axis=0)/nk[ik]
 
-       return prior_cl, mu, sigma
-   ```
-
-
+    return prior_cl, mu, sigma
+```
 
 Now, we can call EM steps iteratively,
 

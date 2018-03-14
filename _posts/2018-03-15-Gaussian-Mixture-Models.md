@@ -39,7 +39,7 @@ $$
 p(z, x) =  p(x | z)p(z).
 $$
 
-$$p(z)$$ is always a multinomial distribution, and $$p(x | z)$$ is, in general, any distribution. In the special case of Gaussian Mixture Models, $$p(x | z)$$ is Gaussian.  We can obtain $$p(x)$$ by marginalising over $$z$$,
+$$p(z)$$ is always a multinomial distribution, and $$p(x \| z)$$ is, in general, any distribution. In the special case of Gaussian Mixture Models, $$p(x \| z)$$ is Gaussian.  We can obtain $$p(x)$$ by marginalising over $$z$$,
 
 $$
 p(x) = \sum_z p(x | z)p(z) 

@@ -65,7 +65,7 @@ $$
 
 The **Expectation-Maximization (EM)** algorithm is used to iteratively update the model parameters and the  values of the latent variables (cluster labels). The two steps in the EM algorithm are repeated iteratively until convergence (i.e: no changes in responsibility vectors):  
 
-1. **Expectation step: ** With the prior for the model parameters, we want to compute a posterior on the cluster probability for each point ( $$p(z_i = k| x_i, \pi_k, \mu_k,\Sigma_k) $$)  sometimes also called **responsibility vector**. 
+1. **Expectation step:** With the prior for the model parameters, we want to compute a posterior on the cluster probability for each point ( $$p(z_i = k\| x_i, \pi_k, \mu_k,\Sigma_k) $$)  sometimes also called **responsibility vector**. 
 
    ​
 
@@ -77,7 +77,7 @@ The **Expectation-Maximization (EM)** algorithm is used to iteratively update th
    $$
    \begin{eqnarray}
    p(z_i = k| x, \theta) &=& \frac{p(x,\theta |z_i = k) p(z_i = k)}{ \int_k' p(x,\theta |z_i = k') p(z_i = k') }\\
-   p(z_i = k| x, \theta)  = \gamma_{i,k} &=& \frac{\pi_k \mathcal{N}(\mu_k,\Sigma_k)  }{\sum_{k'} \pi_{k'} \mathcal{N}(\mu_{k'},\Sigma_{k'})}. \quad \quad \quad \quad (1)
+   p(z_i = k| x, \theta)  &=& \gamma_{i,k} = \frac{\pi_k \mathcal{N}(\mu_k,\Sigma_k)  }{\sum_{k'} \pi_{k'} \mathcal{N}(\mu_{k'},\Sigma_{k'})}. \quad \quad \quad \quad (1)
    \end{eqnarray}
    $$
    ​     
@@ -86,7 +86,7 @@ The **Expectation-Maximization (EM)** algorithm is used to iteratively update th
 
    ​
 
-   2. **Maximimzation step: **To find the optimal parameters $$\mu, \Sigma$$, we need to maximise the log-likelihood of $$p(x)$$. The log likelihood is:
+   2. **Maximimzation step:** To find the optimal parameters $$\mu, \Sigma$$, we need to maximise the log-likelihood of $$p(x)$$. The log likelihood is:
 
 
 $$
@@ -103,7 +103,7 @@ To maximize it, we need to find $$ \partial \mathcal{L} /\partial \mathcal{\mu} 
 $$
 \begin{eqnarray}
 \mu_k & = & \frac{1}{N_k}\sum_{i}^N \gamma_{i,k} x_i    \quad \quad  \quad  \quad   \quad  \quad  \quad   \quad  \quad  \quad  (2) \\
-\Sigma_k &=& \frac{1}{N_k}\sum_{i}^N \gamma_{i,k} (x_i-\mu_k)^T (x_i-\mu_k)  \quad \quad  \  (3) \\
+\Sigma_k &=& \frac{1}{N_k}\sum_{i}^N \gamma_{i,k} (x_i-\mu_k)^T (x_i-\mu_k)  \quad \quad     (3) \\
 \pi_k &=& \frac{N_k}{N} \quad \quad  \quad  \quad   \quad  \quad  \quad   \quad  \quad  \quad  \quad  \quad  \quad   \quad   (4)
 \end{eqnarray}
 $$

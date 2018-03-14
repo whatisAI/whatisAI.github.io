@@ -165,7 +165,7 @@ You can download the notebook [here](https://github.com/whatisAI/whatisAI.github
 
 There are two main functions that will be called iteratively. 
 
-1. In EM, the first step is the expectation step where we compute equation **(1)** which is the posterior of the probabilities of each point belonging to a cluster:
+* In EM, the first step is the expectation step where we compute equation **(1)** which is the posterior of the probabilities of each point belonging to a cluster:
 
 ```python
 def compute_post(m,k,x,mu,sigma, prior_cl):
@@ -180,7 +180,7 @@ def compute_post(m,k,x,mu,sigma, prior_cl):
 
 
 
-2. In the maximization step, we update the parameters of the GMM
+* In the maximization step, we update the parameters of the GMM
 
 ```python
 def update_params(m,k,x,mu,sigma, PostZ):

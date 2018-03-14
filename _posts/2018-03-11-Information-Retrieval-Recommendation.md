@@ -30,16 +30,29 @@ Looking for similar features in a dataset can be done with KD-Trees or K-nearest
 
 
 
-### Text representation  ( a little bit of NLP)
+### Text representation  ( a little bit of NLP )
 
-I will not go into details of text representation or bag of words, but will only briefly highlight what seems essential to understand the features we will cluster. For the text representation we will use TF - IDF (Term frequency - inverse document frequency) to extract features from each text $$d_i$$ in our database. 
+I will not go into details of text representation or bag of words, but will only briefly highlight what seems essential to understand the features we will cluster. For the text representation we will use **TF - IDF **(Term frequency - inverse document frequency) to extract features from each text $$d_i$$ in our database. 
+
+TF-IDF is a bag-of-words representation, with smart scalings for each word. The key concepts here are:
+
+- The **vocabulary**  is the set of unique (1,2,..,n)-grams appearing in the corpus (collection of all texts). Let $$N$$ denote the size of the vocabulary. Each entry represents an n-gram. 
 
 
-TF-IDF is a bag-of-words representation. That is, it counts the occurrences of each word in article $$d_i$$ (TF), and multiplies it by a scaling factor (IDF)  $$ \log \frac{ \# documents}{1 + \text{ #documents  using  that   word}} $$, where TF is down-weighted if it is a word appearing in every document in the database.  To be precise, I will be using a (1,2,3)-gram bag of words representation. This means I look for occurrences of single words, but also pairs and triplets of words. For example, 2-grams (bigrams) are useful to distinguish between occurrences of "applied mathematician" and "pure mathematician".  The vocabulary space is then the set of unique (1,2,3)-grams appearing in the corpus (collection of all texts). Let $$N$$ denote the size of the vocabulary. Each document $$d_i$$ is represented with a sparse vector $$x_i$$ of size $$N$$, where a non-zero entry $$j$$ of $$x_i$$,  $$x_i(j)$$ indicates the TF-IDF of vocabulary element $$j$$. It is common practice to normalise the each feature vector, to make the feature representation independent of the text length.  If there are $$L$$ documents in the corpus, the feature representation is a sparse matrix $$X$$ of dimension $$L \times N$$.
+- The occurrences of each vocabulary element in article $$d_i$$ is the **term frequency (TF)**. For example,  consider we have a vocabulary of $$N$$ words, and article  $$d_i$$ = 'Row row row your boat gently down the stream'.  If all the words in $$d_i$$ are present in the vocabulary, the term frequency vector $$d_i$$ would be a vector of size $$N$$, with 7 non-zero entries.  If there are $$L$$ documents in the corpus, the feature representation is a sparse matrix $$X$$ of dimension $$L \times N$$.
+- The **inverse document frequency (IDF)** is a scaling factor applied to each entry in the TF vector. The goal is to down-weight words that appear many times in all documents since those words will not help perform a good classification. For example, all the stop-words in english ( this, that, in, the, ...) , appear very often in any type of text, and are generally uninformative of the context.  The IDF is defined as:
+
+$$
+IDF  =  \log \frac{ \# documents}{1 + \text{ #documents  using  that   word}}.
+$$
+
+-  It should now be intuitive that using **TF-IDF = TF\*IDF** is a good feature representation. There are several variations: 
+  - Normaiizlng TF-IDF to make each representation independent of the length of the document.
+  - Expanding the vocabulary to consider not only single words but pairs of consecutive words. This is often referred to as bi-gram bag of words representation. For example, 2-grams (bigrams) are useful to distinguish between occurrences of "applied mathematician" and "pure mathematician", or "not good" and "very good". Looking for n-grams can help understand the text. In my example, I will be using 1,2,3-grams to create the vocabulary. 
 
 
+  -  In Python, the *scikit-learn* package has bag-of-words feature extraction methods, including TF-IDF: **sklearn.feature_extraction.text.TfidfVectorizer**. This comes with various options, including $$n-gram$$ range, tokenization, stop-word removal, accent removal, normalisation type (l1,l2,none), maximum features, among others, and provides as output a **sparse matrix representation**.
 
-In Python, the *scikit-learn* package has bag-of-words feature extraction methods, including TF-IDF: *sklearn.feature_extraction.text.TfidfVectorizer*. This comes with various options, including $$n-gram$$ range, tokenization, stop-word removal, accent removal, normalisation type (l1,l2,none), maximum features, among others, and provides as output a sparse matrix representation.
 
 
 
@@ -63,7 +76,7 @@ $$
 \phi =  \sum_{j=1}^k \sum_{x_i \in C( z_j)} d(x_i, c_j)
 $$
 
-Algorithm:
+**Algorithm**:
 
 1. Initialize cluster centres. 
 
@@ -78,7 +91,6 @@ Algorithm:
    2. Update the cluster centers with the observations assigned in previous step. 
 
       ​	$$ \mu_j = \frac{1}{n_j} \sum_{x_i \in C( z_j)} x_i $$
-      
 
 
 

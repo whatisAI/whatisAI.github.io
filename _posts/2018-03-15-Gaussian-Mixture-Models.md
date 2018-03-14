@@ -75,7 +75,9 @@ The **Expectation-Maximization (EM)** algorithm is used to iteratively update th
    $$
    
    
+   
    we can use it to compute the posterior probability we are interested in:
+   
    
    $$
    \begin{eqnarray}

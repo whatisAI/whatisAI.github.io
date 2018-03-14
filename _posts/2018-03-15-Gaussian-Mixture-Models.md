@@ -67,24 +67,21 @@ The **Expectation-Maximization (EM)** algorithm is used to iteratively update th
 
 1. **Expectation step:** With the prior for the model parameters, we want to compute a posterior on the cluster probability for each point ( $$p(z_i = k\| x_i, \pi_k, \mu_k,\Sigma_k) $$)  sometimes also called **responsibility vector**. 
 
-   ​
 
    Recalling Bayes Theorem,
+   
    $$
    P(A|B,C) = \frac{P(B,C|A) P(A)}{P(B,C)} = \frac{P(B,C|A) P(A)}{\int_{A'}P(B,C|A') P(A')dA'}
    $$
-   ​
+   
    $$
    \begin{eqnarray}
    p(z_i = k| x, \theta) &=& \frac{p(x,\theta |z_i = k) p(z_i = k)}{ \int_k' p(x,\theta |z_i = k') p(z_i = k') }\\
    p(z_i = k| x, \theta)  &=& \gamma_{i,k} = \frac{\pi_k \mathcal{N}(\mu_k,\Sigma_k)  }{\sum_{k'} \pi_{k'} \mathcal{N}(\mu_{k'},\Sigma_{k'})}. \quad \quad \quad \quad (1)
    \end{eqnarray}
    $$
-   ​     
-
+      
    Note that $$ \gamma_{i,k} $$ denotes the probability that point $$x_i$$ belongs to cluster $$k$$. This allows to **quantify the incertitude on the cluster labelling**. For example, if there are 3 labels and $$\gamma_{i,k} = 1/3$$    means the labelling has a lot of incertitude.      
-
-   ​
 
    2. **Maximimzation step:** To find the optimal parameters $$\mu, \Sigma$$, we need to maximise the log-likelihood of $$p(x)$$. The log likelihood is:
 
@@ -103,7 +100,7 @@ To maximize it, we need to find $$ \partial \mathcal{L} /\partial \mathcal{\mu} 
 $$
 \begin{eqnarray}
 \mu_k & = & \frac{1}{N_k}\sum_{i}^N \gamma_{i,k} x_i    \quad \quad  \quad  \quad   \quad  \quad  \quad   \quad  \quad  \quad  (2) \\
-\Sigma_k &=& \frac{1}{N_k}\sum_{i}^N \gamma_{i,k} (x_i-\mu_k)^T (x_i-\mu_k)  \quad \quad     (3) \\
+\Sigma_k &=& \frac{1}{N_k}\sum_{i}^N \gamma_{i,k} (x_i-\mu_k)^T (x_i-\mu_k)  \quad \quad \quad \quad  (3) \\
 \pi_k &=& \frac{N_k}{N} \quad \quad  \quad  \quad   \quad  \quad  \quad   \quad  \quad  \quad  \quad  \quad  \quad   \quad   (4)
 \end{eqnarray}
 $$

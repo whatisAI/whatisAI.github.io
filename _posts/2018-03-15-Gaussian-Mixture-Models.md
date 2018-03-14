@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Gaussian Mixture Models - a text classification example
+title: Gaussian Mixture Models - a text clustering example
 ---
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
@@ -19,7 +19,7 @@ Gaussian Mixture Models are used beyond clusering applications, and are a useful
 
 
 
-After a short introduction to Gaussian Mixture Models (GMM), I will do a toy  2D example, where I [implement the EM](#EMalgo) algorithm from scratch and compare it to the the result obtained with the [GMM implemented in scikit](#GMMPython). 
+After a short introduction to Gaussian Mixture Models (GMM), I will do a toy  2D example, where I [implement the EM](#EMalgo) algorithm from scratch and compare it to the the result obtained with the [GMM implemented in scikit](#GMMPython). Finally, we can apply the GMM to [cluster the job advertisements](#jobgmm).
 
 
 
@@ -243,9 +243,82 @@ The clustering results are shown below. On the left is using the scikit function
 
  The *colors* indicate *clusters*, and the **sizes are proportional to the certainty**.  Both functions arrive to nearly same results always, although sometimes a few points may differ. The implementation without using scikit was mainly to test my understanding.
 
-
 <div style="text-align: center;" style="margin:50px 50px 50px 50px">
 <img src="{{ site.baseurl }}/images/GMM_clustering.jpg" alt="gamestate" >
 </div>
 
-We can now use [GMM to cluster the Indeed Jobs](https://github.com/whatisAI/Classification_Adds/blob/master/Indeed_JobClassification_GMM.ipynb) as we did previously using [Kmeans](https://whatisai.github.io/Information-Retrieval-Recommendation/).  The [notebook](https://github.com/whatisAI/Classification_Adds/blob/master/Indeed_JobClassification_GMM.ipynb) contains the details. 
+
+
+###  <a name="jobgmm"> Clustering job advertisement with GMM</a>
+
+We can now use [GMM to cluster the Indeed Jobs.](https://github.com/whatisAI/Classification_Adds/blob/master/Indeed_JobClassification_GMM.ipynb) You can download this [notebook](https://github.com/whatisAI/Classification_Adds/blob/master/Indeed_JobClassification_GMM.ipynb).
+
+As I did in my [previous post](https://whatisai.github.io/Information-Retrieval-Recommendation/), I collected the job advertisements for "data-scientist", and created the features using TF-IDF.  All the pre-processing is exactly the same, so I will not repeat the details. 
+
+After clustering, I look at where the centres of the Gaussians are, and look the ones that have the most weight, to understand each cluster. For a specific run, the results were as follows:
+
+```
+Important features for cluster  0
+research                      0.13519889107029157
+sciences                      0.09332351293807206
+social                        0.08184207446558818
+data                          0.0771361762386771
+content                       0.07563418282231256
+
+ 
+ Important features for cluster  1
+analyst                       0.1040533220599665
+analytics                     0.09383322420589418
+business                      0.08764275289464411
+data                          0.08016894058385425
+customer                      0.07747423994838035
+
+ 
+ Important features for cluster  2
+business                      0.060880200267596746
+data                          0.0602169703252302
+engineer                      0.0595723383638893
+help                          0.056738072390410184
+projects                      0.05558856031452268
+
+ 
+ Important features for cluster  3
+developer                     0.16206101848635407
+software                      0.12119626940241453
+java                          0.11103844485126925
+selection                     0.10707740528104592
+coding                        0.0893526401058581
+```
+
+
+
+### Let us now look in detail at the certainty of each job advertisement classification
+
+
+
+As mentioned, estimator.predict_proba(features)  returns a $$N\times k$$ matrix, representing the probability that advertisement $$x_i$$ belongs to cluster $$k$$. Here is an example of the first ten advertisements:
+
+```python
+[[  4.91272164e-42   1.47300082e-01   8.24583506e-36   8.52699918e-01]
+ [  1.72533774e-62   9.99947673e-01   5.00420735e-53   5.23273617e-05]
+ [  8.55562609e-43   1.23105622e-01   4.17968854e-37   8.76894378e-01]
+ [  5.92908971e-54   9.97533813e-01   8.29750436e-46   2.46618681e-03]
+ [  4.39147798e-03   4.13869091e-45   9.95608522e-01   3.24111757e-28]]
+```
+
+
+
+So, for example, *the advertisement on the first row belongs primarily to cluster 3, but can also be in cluster 1*.  The job advertisement in the second row is mostly in cluster 1, and *advertisement in the third row can belong to both cluster 1 **and** cluster 3*. 
+
+
+
+Clustering in this way can allow you to better target what you are looking for, and loose valuable information that, although being more likely in another group, may still be useful in your search. 
+
+
+
+
+
+
+
+
+

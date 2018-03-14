@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Clustering with Gaussian Mixture Models : Text classification example
+title: Gaussian Mixture Models - a text classification example
 ---
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
@@ -14,7 +14,6 @@ Keywords: Gaussian Mixture Models, GMM, cluster
 If we have a strong belief that the underlying distribution of univariate random variable $$x$$ is Gaussian, or a linear combination of Gaussians, the distribution can be expressed as a mixture of Gaussians:
 
 
-
 $$
 \begin{eqnarray}
 p(x) &=& \sum_k \pi_k  \mathcal{N}\left( \mu_k, \sigma_k \right) \\
@@ -24,7 +23,6 @@ $$
 
 where $$\pi$$ is a vector of probabilities, which provides the mixing proportions. In the multivariate case, 
 
-
 $$
 p(\vec{x}) = \sum_k \pi_k  \mathcal{N}\left( \vec{\mu}_k, \Sigma_k \right)
 $$
@@ -32,24 +30,17 @@ $$
 Where $$\vec{x} \in \mathcal{R}^N, \vec{\mu} \in \mathcal{R}^N,  \Sigma \in \mathcal{R}^N \times \mathcal{R}^N$$. The goal of modelling is to find (learn) the parameters of the GMM: weights, mean and covariance. The covariance matrix $$\Sigma$$ is symmetric positive definite and thus contains $$N(N+1)$$ free parameters. To reduce the number of parameters, the off diagonal terms may be set to zero, and only the variance in each dimension is fitted, reducing it to $$N$$ parameters. 
 
 
-
 ## Clustering using Gaussian Mixture Models
 
 Let $$z_i$$ be the cluster label of random variable $$\vec{x}_i$$ which is hidden from us. For this reason, $$z_i$$ is sometimes referred to as a **hidden** or **latent** variable. 
 
-
-
  In a mixture model, we first sample $$z$$, and then we sample the observables $$x$$  from a distribution which depends on $$z$$:
-
-
 
 $$
 p(z, x) =  p(x | z)p(z).
 $$
 
 $$p(z)$$ is always a multinomial distribution, and $$p(x|z)$$ is, in general, any distribution. In the special case of Gaussian Mixture Models, $$p(x|z)$$ is Gaussian.  We can obtain $$p(x)$$ by marginalising over $$z$$,
-
-
 
 $$
 p(x) = \sum_z p(x | z)p(z) 

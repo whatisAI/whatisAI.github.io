@@ -15,7 +15,7 @@ Clustering with Gaussian Mixture Models (GMM) allows to retrieve not only the la
 
  
 
-Gaussian Mixture Models are useful beyond clusering applications, and are a useful model fitting technique as it provides a probability distribution that best fits the data. The algorithm that allows to fit the model parameters is known as Expectation Maximization (EM). 
+Gaussian Mixture Models are used beyond clusering applications, and are a useful model fitting techniques they it provide a probability distribution that best fits the data. The algorithm that allows to fit the model parameters is known as Expectation Maximization (EM). 
 
 
 
@@ -105,13 +105,10 @@ $$
    \end{eqnarray}
 $$
 
-
 ​    
    Note that $$ \gamma_{i,k} $$ denotes the probability that point $$x_i$$ belongs to cluster $$k$$. This allows to **quantify the incertitude on the cluster labelling**. For example, if there are 3 labels and $$\gamma_{i,k} = 1/3$$    means the labelling has a lot of incertitude.      
 
-
 2. **Maximimzation step:** To find the optimal parameters $$\mu, \Sigma$$, we need to maximise the log-likelihood of $$p(x)$$. The log likelihood is:
-
 
 $$
 \begin{eqnarray}

@@ -39,7 +39,7 @@ $$
 p(z, x) =  p(x | z)p(z).
 $$
 
-$$p(z)$$ is always a multinomial distribution, and $$p(x\|z)$$ is, in general, any distribution. In the special case of Gaussian Mixture Models, $$p(x\|z)$$ is Gaussian.  We can obtain $$p(x)$$ by marginalising over $$z$$,
+$$p(z)$$ is always a multinomial distribution, and $$p(x | z)$$ is, in general, any distribution. In the special case of Gaussian Mixture Models, $$p(x | z)$$ is Gaussian.  We can obtain $$p(x)$$ by marginalising over $$z$$,
 
 $$
 p(x) = \sum_z p(x | z)p(z) 
@@ -64,7 +64,8 @@ $$
 
 The **Expectation-Maximization (EM)** algorithm is used to iteratively update the model parameters and the  values of the latent variables (cluster labels). The two steps in the EM algorithm are repeated iteratively until convergence (i.e: no changes in responsibility vectors):  
 
-1. **Expectation step:** With the prior for the model parameters, we want to compute a posterior on the cluster probability for each point ( $$p(z_i = k\| x_i, \pi_k, \mu_k,\Sigma_k) $$)  sometimes also called **responsibility vector**. 
+1. **Expectation step:** With the prior for the model parameters, we want to compute a posterior on the cluster probability for each point ( $$p(z_i = k | x_i, \pi_k, \mu_k,\Sigma_k) $$)  sometimes also called **responsibility vector**. 
+
 
 
    Recalling Bayes Theorem,
@@ -72,6 +73,7 @@ The **Expectation-Maximization (EM)** algorithm is used to iteratively update th
    $$
    P(A|B,C) = \frac{P(B,C|A) P(A)}{P(B,C)} = \frac{P(B,C|A) P(A)}{\int_{A'}P(B,C|A') P(A')dA'},
    $$
+   
    
    we can use it to compute the posterior probability we are interested in:
    
@@ -81,6 +83,7 @@ The **Expectation-Maximization (EM)** algorithm is used to iteratively update th
    p(z_i = k| x, \theta)  &=& \gamma_{i,k} = \frac{\pi_k \mathcal{N}(\mu_k,\Sigma_k)  }{\sum_{k'} \pi_{k'} \mathcal{N}(\mu_{k'},\Sigma_{k'})}. \quad \quad \quad \quad (1)
    \end{eqnarray}
    $$
+    
     
     
    Note that $$ \gamma_{i,k} $$ denotes the probability that point $$x_i$$ belongs to cluster $$k$$. This allows to **quantify the incertitude on the cluster labelling**. For example, if there are 3 labels and $$\gamma_{i,k} = 1/3$$    means the labelling has a lot of incertitude.      

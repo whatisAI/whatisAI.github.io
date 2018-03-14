@@ -6,8 +6,7 @@ title: Gaussian Mixture Models - a text classification example
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 ## Gaussian Mixture Models
-
-Keywords: Gaussian Mixture Models, GMM, cluster
+*Keywords: Gaussian Mixture Models, GMM, cluster, Expectation-Maximization, EM*
 
 
 
@@ -17,7 +16,7 @@ If we have a strong belief that the underlying distribution of univariate random
 $$
 \begin{eqnarray}
 p(x) &=& \sum_k \pi_k  \mathcal{N}\left( \mu_k, \sigma_k \right) \\
-\sum_k \pi_k &=& 1,
+1 &=& \sum_k \pi_k,
 \end{eqnarray}
 $$
 
@@ -71,8 +70,10 @@ The **Expectation-Maximization (EM)** algorithm is used to iteratively update th
    Recalling Bayes Theorem,
    
    $$
-   P(A|B,C) = \frac{P(B,C|A) P(A)}{P(B,C)} = \frac{P(B,C|A) P(A)}{\int_{A'}P(B,C|A') P(A')dA'}
+   P(A|B,C) = \frac{P(B,C|A) P(A)}{P(B,C)} = \frac{P(B,C|A) P(A)}{\int_{A'}P(B,C|A') P(A')dA'},
    $$
+   
+   we can use it to compute the posterior probability we are interested in:
    
    $$
    \begin{eqnarray}
@@ -80,10 +81,12 @@ The **Expectation-Maximization (EM)** algorithm is used to iteratively update th
    p(z_i = k| x, \theta)  &=& \gamma_{i,k} = \frac{\pi_k \mathcal{N}(\mu_k,\Sigma_k)  }{\sum_{k'} \pi_{k'} \mathcal{N}(\mu_{k'},\Sigma_{k'})}. \quad \quad \quad \quad (1)
    \end{eqnarray}
    $$
-      
+    
+    
    Note that $$ \gamma_{i,k} $$ denotes the probability that point $$x_i$$ belongs to cluster $$k$$. This allows to **quantify the incertitude on the cluster labelling**. For example, if there are 3 labels and $$\gamma_{i,k} = 1/3$$    means the labelling has a lot of incertitude.      
+   
 
-   2. **Maximimzation step:** To find the optimal parameters $$\mu, \Sigma$$, we need to maximise the log-likelihood of $$p(x)$$. The log likelihood is:
+2. **Maximimzation step:** To find the optimal parameters $$\mu, \Sigma$$, we need to maximise the log-likelihood of $$p(x)$$. The log likelihood is:
 
 
 $$
@@ -101,7 +104,7 @@ $$
 \begin{eqnarray}
 \mu_k & = & \frac{1}{N_k}\sum_{i}^N \gamma_{i,k} x_i    \quad \quad  \quad  \quad   \quad  \quad  \quad   \quad  \quad  \quad  (2) \\
 \Sigma_k &=& \frac{1}{N_k}\sum_{i}^N \gamma_{i,k} (x_i-\mu_k)^T (x_i-\mu_k)  \quad \quad \quad \quad  (3) \\
-\pi_k &=& \frac{N_k}{N} \quad \quad  \quad  \quad   \quad  \quad  \quad   \quad  \quad  \quad  \quad  \quad  \quad   \quad   (4)
+\pi_k &=& \frac{N_k}{N} \quad \quad  \quad  \quad   \quad  \quad  \quad   \quad  \quad  \quad  \quad  \quad  \quad  (4)
 \end{eqnarray}
 $$
 

@@ -82,7 +82,7 @@ The **Expectation-Maximization (EM)** algorithm is used to iteratively update th
 
 
 
-1. **Expectation step:** With the prior for the model parameters, we want to compute a posterior on the cluster probability for each point ( $$p(z_i = k \| x_i, \pi_k, \mu_k,\Sigma_k) $$)  sometimes also called **responsibility vector**. 
+* **Expectation step:** With the prior for the model parameters, we want to compute a posterior on the cluster probability for each point ( $$p(z_i = k \| x_i, \pi_k, \mu_k,\Sigma_k) $$)  sometimes also called **responsibility vector**. 
 
 
    Recalling Bayes Theorem,
@@ -109,7 +109,7 @@ $$
 
 
 
-2. **Maximisation step:** To find the optimal parameters $$\mu, \Sigma$$, we need to maximise the log-likelihood of $$p(x)$$. The log likelihood is:
+* **Maximisation step:** To find the optimal parameters $$\mu, \Sigma$$, we need to maximise the log-likelihood of $$p(x)$$. The log likelihood is:
 
 $$
 \begin{eqnarray}

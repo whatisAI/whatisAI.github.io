@@ -1,3 +1,10 @@
+---
+layout: post
+title: Clustering with Gaussian Mixture Models : Text classification example
+---
+
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
 ## Gaussian Mixture Models
 
 Keywords: Gaussian Mixture Models, GMM, cluster
@@ -126,14 +133,14 @@ To go through the clustering algorithm using a Gaussian Mixture Model, let's fir
 
 We have $$N=40$$ points, in two dimensions, and we would like to find and underlying structure with $$k=3$$ clusters. 
 
-![GMM_data](/Users/clcaste/Documents/WEBDEV/MLBLOG/whatisAI.github.io/images/GMM_data.png)
+![GMM_data](https://github.com/whatisAI/whatisAI.github.io/blob/master/images/GMM_data.png)
 
 We will:
 
 1. Write the EM algorithm from scratch
 2. Compare the outcome with the built in GMM from scikit  **sklearn.mixture.GaussianMixture**
 
-You can download the notebook [here](https://github.com/whatisAI/Classification_Adds/blob/master/GaussianMixtureModel_Clustering.ipynb).
+You can download the notebook [here](https://github.com/whatisAI/whatisAI.github.io/blob/master/images/GMM_clustering.jpg).
 
 There are two main functions that will be called iteratively. 
 

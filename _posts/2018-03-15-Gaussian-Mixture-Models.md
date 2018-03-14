@@ -40,7 +40,7 @@ $$
 p(z, x) =  p(x | z)p(z).
 $$
 
-$$p(z)$$ is always a multinomial distribution, and $$p(x|z)$$ is, in general, any distribution. In the special case of Gaussian Mixture Models, $$p(x|z)$$ is Gaussian.  We can obtain $$p(x)$$ by marginalising over $$z$$,
+$$p(z)$$ is always a multinomial distribution, and $$p(x\|z)$$ is, in general, any distribution. In the special case of Gaussian Mixture Models, $$p(x\|z)$$ is Gaussian.  We can obtain $$p(x)$$ by marginalising over $$z$$,
 
 $$
 p(x) = \sum_z p(x | z)p(z) 
@@ -53,7 +53,7 @@ $$
 p(x_i) = \sum_k p(x_i| z_i =k)p(z=k)
 $$
 
-If we have $$N$$ points that are i.i.d , and $$p(x|z)$$ Gaussian,
+If we have $$N$$ points that are i.i.d , and $$p(x\|z)$$ Gaussian,
 
 
 $$

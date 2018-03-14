@@ -108,7 +108,9 @@ $$
 ​    
    Note that $$ \gamma_{i,k} $$ denotes the probability that point $$x_i$$ belongs to cluster $$k$$. This allows to **quantify the incertitude on the cluster labelling**. For example, if there are 3 labels and $$\gamma_{i,k} = 1/3$$    means the labelling has a lot of incertitude.      
 
-2. **Maximimzation step:** To find the optimal parameters $$\mu, \Sigma$$, we need to maximise the log-likelihood of $$p(x)$$. The log likelihood is:
+
+
+2. **Maximisation step:** To find the optimal parameters $$\mu, \Sigma$$, we need to maximise the log-likelihood of $$p(x)$$. The log likelihood is:
 
 $$
 \begin{eqnarray}
@@ -179,7 +181,7 @@ def compute_post(m,k,x,mu,sigma, prior_cl):
 
 
 
-2. In the maximisation step, we update the parameters of the GMM
+2. In the maximization step, we update the parameters of the GMM
 
    ```python
    def update_params(m,k,x,mu,sigma, PostZ):
@@ -236,7 +238,13 @@ y_prob = estimator.predict_proba(x)
 
 
 
-The clustering results are shown below. On the left is using the scikit function, and on the right the implementation from scratch sketched above. The colors indicate clusters, and the sizes are proportional to the certainty.  Both functions arrive to nearly same results always, although sometimes a few points may differ. The implementation without using scikit was mainly to test my understanding.
+
+
+The clustering results are shown below. On the left is using the scikit function, and on the right the implementation from scratch sketched above.
+
+
+
+ The *colors* indicate *clusters*, and the **sizes are proportional to the certainty**.  Both functions arrive to nearly same results always, although sometimes a few points may differ. The implementation without using scikit was mainly to test my understanding.
 
 
 <div style="text-align: center;" style="margin:50px 50px 50px 50px">

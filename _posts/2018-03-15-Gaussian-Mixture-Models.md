@@ -64,7 +64,7 @@ $$
 
 The **Expectation-Maximization (EM)** algorithm is used to iteratively update the model parameters and the  values of the latent variables (cluster labels). The two steps in the EM algorithm are repeated iteratively until convergence (i.e: no changes in responsibility vectors):  
 
-1. **Expectation step:** With the prior for the model parameters, we want to compute a posterior on the cluster probability for each point ( $$p(z_i = k | x_i, \pi_k, \mu_k,\Sigma_k) $$)  sometimes also called **responsibility vector**. 
+1. **Expectation step:** With the prior for the model parameters, we want to compute a posterior on the cluster probability for each point ( $$p(z_i = k \| x_i, \pi_k, \mu_k,\Sigma_k) $$)  sometimes also called **responsibility vector**. 
 
 
 

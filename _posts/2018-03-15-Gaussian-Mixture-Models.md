@@ -19,7 +19,7 @@ Gaussian Mixture Models are used beyond clusering applications, and are useful m
 
 
 
-After a short introduction to Gaussian Mixture Models (GMM), I will do a toy  2D example, where I [implement the EM](#EMalgo) algorithm from scratch and compare it to the the result obtained with the [GMM implemented in scikit](#GMMPython). Finally, we can apply the GMM to [cluster the job advertisements](#jobgmm).
+After a short introduction to Gaussian Mixture Models (GMM), I will do a [toy  2D example](#EMalgo), where I [implement the EM](#EMalgo) algorithm from scratch and compare it to the the result obtained with the [GMM implemented in scikit](#GMMPython). Finally, we can apply the GMM to [cluster the job advertisements](#jobgmm).
 
 
 
@@ -313,6 +313,12 @@ So, for example, *the advertisement on the first row belongs primarily to cluste
 
 
 Clustering in this way can allow you to better target what you are looking for, and loose valuable information that, although being more likely in another group, may still be useful in your search. 
+
+
+
+### Remarks
+
+I have deliberately left out the discussion on feature selection and selecting the number of clusters. In a supervised setting, we would do cross validation to select these. For the unsupervised setting, this topic will be discussed in a later post.
 
 
 

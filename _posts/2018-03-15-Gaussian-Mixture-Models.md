@@ -15,7 +15,7 @@ Clustering with Gaussian Mixture Models (GMM) allows to retrieve not only the la
 
  
 
-Gaussian Mixture Models are used beyond clusering applications, and are a useful model fitting techniques they it provide a probability distribution that best fits the data. The algorithm that allows to fit the model parameters is known as Expectation Maximization (EM). 
+Gaussian Mixture Models are used beyond clusering applications, and are useful model fitting techniques as they provide a probability distribution that best fits the data. The algorithm that allows to fit the model parameters is known as Expectation Maximization (EM). 
 
 
 

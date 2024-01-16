@@ -9,7 +9,9 @@ permalink : /childrenstories/
 
 
 
-Join my daughter and I as we explore the world through stories that help us understand history, science, feelings and, more importantly, have some fun while learning. \n
+Join my daughter and I as we explore the world through stories that help us understand history, science, feelings and, more importantly, have some fun while learning. 
+
+\n
 \n
 
 

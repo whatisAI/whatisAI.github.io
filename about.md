@@ -6,7 +6,7 @@ permalink: /about/
 
 I've been living in London since 2015, and have loved every day of it. 
 
-I have undergraduate degrees in **electronic engineering** and **physics**, a **masters in applied mathematics**, and a **Ph.D in computational geophysics*.  
+I have undergraduate degrees in **electronic engineering** and **physics**, a **masters in applied mathematics**, and a **Ph.D in computational geophysics**.  
 
 
 

@@ -39,8 +39,6 @@ Watch the demo here
   <figcaption>demo.</figcaption>
 </figure> -->
 
-
-
 The goal is for users to come to our AI travel agent, Flai (as in Fly with AI, but pronounced the same as the insect). Flai will help the user discover which places to go to. [OpenAI shared a neat demo of a travel agent in July 2025](https://www.youtube.com/watch?v=1jn_RpbPbEc), where the agent has the capacity to interact with the webpage. Unlike the OpenAI demo, this is a very stripped down version that has no GUI interaction with any website, and only has access to data on disk.
 
 

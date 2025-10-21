@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AI agents - a small AI travel agent case study
+title: Beginner’s Guide to Agentic Flows - A Tiny AI Travel Agent
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
@@ -128,7 +128,9 @@ Note how in this demo there is no tool specific for destination descriptions or 
 
 
 ### Traces: tool calls throughout the demo conversation
-Going back to my first request, "I want to go somwehere for Christmas for under 350 euros", I can see in the logs that the first tool that is called is:
+Going back to the demo, we can see in the logs what is happening at each user request. 
+
+For my first request, *"I want to go somwehere for Christmas for under 350 euros"*, I can see in the logs that the first tool that is called is:
 
 ```
 get_destinations_with_flight_price_limit({
@@ -138,7 +140,7 @@ get_destinations_with_flight_price_limit({
 })
 ```
 
-I then got a list of destinations, and asked for those destinations, which one had the highest temperature. At that point, the following tool call happens
+I got a list of destination recommendations, and asked for those destinations, which one had the highest temperature. At that point, the following tool call happens
 
 ```
 get_cities_with_weather_conditions({
@@ -154,7 +156,7 @@ get_cities_with_weather_conditions({
 Notice that the tool will return the temepratures for the month of December, for all cities. It is the reasoning abilities in the LLM that allow it to focus on the destinations that fit my budget from the previous interaction. 
 
 
-I then asked, "If I go to Istanbul, which are the cheapest dates to fly", for which the following tool call happens:
+I then asked, *"If I go to Istanbul, which are the cheapest dates to fly"*, for which the following tool call happens:
 
 ```
 get_flight_prices_origin_to_destination({

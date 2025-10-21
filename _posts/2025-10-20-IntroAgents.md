@@ -23,7 +23,7 @@ The agent is deployed [here](https://huggingface.co/spaces/cvclpl/small_travel_a
 
 Watch the demo here
 
-<figure class="video">
+<!-- <figure class="video">
   <video
     controls
     preload="metadata"
@@ -37,7 +37,7 @@ Watch the demo here
        <a href="{{ site.baseurl }}/images/output2.mp4">Download the MP4</a>.</p>
   </video>
   <figcaption>demo.</figcaption>
-</figure>
+</figure> -->
 
 
 

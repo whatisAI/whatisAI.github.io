@@ -23,7 +23,25 @@ The agent is deployed [here](https://huggingface.co/spaces/cvclpl/small_travel_a
 
 Watch the demo here
 
-The goal is for users to come to our AI travel agent, Flai (as in Fly with AI, but pronounced the same as the insect). Flai will help the user discover which places to go to. OpenAI shared a neat demo of a travel agent in July 2025, where the agent has the capacity to interact with the webpage. Unlike the OpenAI demo, this is a very stripped down version that has no GUI interaction with any website, and only has access to data on disk.
+<figure class="video">
+  <video
+    controls
+    preload="metadata"
+    playsinline
+    style="max-width:100%;height:auto;"
+    src="{{ site.baseurl }}/images/output2.mp4"
+    poster="{{ site.baseurl }}/images/output2.mp4">
+    <track kind="captions" srclang="en" label="English"
+           src="{{ site.baseurl }}/images/output2.mp4">
+    <p>Your browser doesn’t support HTML5 video.
+       <a href="{{ site.baseurl }}/images/output2.mp4">Download the MP4</a>.</p>
+  </video>
+  <figcaption>demo.</figcaption>
+</figure>
+
+
+
+The goal is for users to come to our AI travel agent, Flai (as in Fly with AI, but pronounced the same as the insect). Flai will help the user discover which places to go to. [OpenAI shared a neat demo of a travel agent in July 2025](https://www.youtube.com/watch?v=1jn_RpbPbEc), where the agent has the capacity to interact with the webpage. Unlike the OpenAI demo, this is a very stripped down version that has no GUI interaction with any website, and only has access to data on disk.
 
 
 ### Scope for Flai:
@@ -52,8 +70,6 @@ The travel agent responds:
 <br> 
 
 
-
-
 As you can see, the agent processed my request and gave me a response using the flight price information in the csv files, which may not be obvious at first sight, but you can check for yourselves with the attached files. But… What is happening under the hood?
 
 
@@ -65,10 +81,10 @@ Our agent will receive the user query, and understand the user intent: do they w
 
 The choice of the agent in production applications is a tradeoff of accuracy (better LLMs will understand and parse intents better), latency and cost. Depending on how specialized or broad your agent is, your user queries and intents may lend themselves to smaller, faster llms. 
 
-
-
-
-
+<br>
+<div style="text-align: center;">
+<img src="{{ site.baseurl }}/images/FlaiDiagram.png" alt="Flai diagram" style="width: 300px;"/> </div>
+<br> 
 
 ### Step 2: Defining the tools
 In defining the agent we said we assumed the agent LLM has no accurate information on flight/hotel pricing, or weather and we would like to give it the ability to retrieve up to date information. We give this power to the agent via the tools we make available for it to use. In the diagram above, the agent has four tools made available for it to use. 
@@ -151,7 +167,7 @@ When the tools don’t provide any results, define strategies to relax constrain
 Have timeouts on call, retries with backoff, manage unsafe user queries.
 
 ### Multi-agent 
-There is no reason to stick to a single agent. For example, as in the October 2025 OpenAI travel agent demo ,  We could have a more modular approach with a flight agent, an itinerary agent, and more, where each one has their own specialization with different tools and different ux components. One of the benefits of having a more modular approach comes when the number of tools, and a lot of context has to be given on the instructions on how or when to use or not those tools. 
+There is no reason to stick to a single agent. For example, as in the [October 2025 OpenAI travel agent demo](https://www.youtube.com/watch?v=44eFf-tRiSg) ,  We could have a more modular approach with a flight agent, an itinerary agent, and more, where each one has their own specialization with different tools and different ux components. One of the benefits of having a more modular approach comes when the number of tools, and a lot of context has to be given on the instructions on how or when to use or not those tools. 
 
 
 

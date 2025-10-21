@@ -130,6 +130,45 @@ Although the evaluation framework is not in place, I have validated a handful of
 Note how in this demo there is no tool specific for destination descriptions or activities. Since the agent finds no tools for destination descriptions, the information is coming from the pretrained LLM. Allowing this for a commercial product is not recommended, unless the LLM responses have been evaluated for the desired criteria (factuality,  appropriateness, tone, etc)
 
 
+### Traces: tool calls throughout the demo conversation
+
+Going back to my first request, "I want to go somwehere for Christmas for under 350 euros", I can see in the logs that the first tool that is called is:
+
+```
+get_destinations_with_flight_price_limit({
+  "origin_city": "London",
+  "max_price": 350,
+  "min_price": 0
+})
+```
+
+I then got a list of destinations, and asked for those destinations, which one had the highest temperature. At that point, the following tool call happens
+
+```
+Arguments
+get_cities_with_weather_conditions({
+  "list_months": [
+    "December"
+  ],
+  "min_temp": null,
+  "max_temp": null,
+  "max_avg_precipitation": null
+})
+```
+
+Notice that the tool will return the temepratures for the month of December, for all cities. It is the reasoning abilities in the LLM that allow it to focus on the destinations that fit my budget from the previous interaction. 
+
+
+I then asked, "If I go to Istanbul, which are the cheapest dates to fly", for which the following tool call happens:
+
+```
+get_flight_prices_origin_to_destination({
+  "destination_city": "Istanbul",
+  "origin_city": "London"
+})
+```
+
+Once again, the tool returns flight prices and the reasoning of the cheapest is done thanks to the reasoning abilities of the LLM.
 
 ## Going beyond the small demo
 

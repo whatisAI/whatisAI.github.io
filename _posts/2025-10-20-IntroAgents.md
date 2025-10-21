@@ -6,8 +6,6 @@ title: AI agents - a small AI travel agent case study
 
 *Keywords: LLM, AI Agents, Agentic AI*
 
-# AI agents:  a tiny AI travel agent case study
-
 As we all embrace the new paradigm of agentics architectures, it helps to walk through the process of building a specialized AI agent to get a deeper understanding. The magic happens because AI agents can leverage your inhouse data as well as leveraging the reasoning ability of LLMs. 
 
 ### Who this might interest
@@ -23,7 +21,7 @@ The agent is deployed [here](https://huggingface.co/spaces/cvclpl/small_travel_a
 
 Watch the demo here
 
-<!-- <figure class="video">
+<figure class="video">
   <video
     controls
     preload="metadata"
@@ -37,7 +35,7 @@ Watch the demo here
        <a href="{{ site.baseurl }}/images/output2.mp4">Download the MP4</a>.</p>
   </video>
   <figcaption>demo.</figcaption>
-</figure> -->
+</figure>
 
 The goal is for users to come to our AI travel agent, Flai (as in Fly with AI, but pronounced the same as the insect). Flai will help the user discover which places to go to. [OpenAI shared a neat demo of a travel agent in July 2025](https://www.youtube.com/watch?v=1jn_RpbPbEc), where the agent has the capacity to interact with the webpage. Unlike the OpenAI demo, this is a very stripped down version that has no GUI interaction with any website, and only has access to data on disk.
 

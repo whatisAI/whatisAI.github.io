@@ -39,11 +39,17 @@ Having a conversation with Flai: step by step
 
 Let’s break down what happens when I interact with Flai our tiny travel agent. I can ask
 
-
+<br>
+<div style="text-align: center;">
+<img src="{{ site.baseurl }}/images/Flai1.png" alt="conversation beginning" style="width: 300px;"/> </div>
+<br> 
 
 The travel agent responds:
 
-
+<br>
+<div style="text-align: center;">
+<img src="{{ site.baseurl }}/images/Flai2.png" alt="conversation response" style="width: 300px;"/> </div>
+<br> 
 
 
 

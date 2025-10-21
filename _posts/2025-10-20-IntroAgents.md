@@ -41,12 +41,11 @@ The goal is for users to come to our AI travel agent, Flai (as in Fly with AI, b
 
 
 ### Scope for Flai:
-
-Real agents and tools, limited data
-Flai only has information about 20 cities in Europe. 
-There are no real time APIs being called. 
-Weather data for each destination and month, and average flight time between destinations was scraped and provided via a csv file. 
-Prices are completely random numbers, for weekday trips lasting 5 days starting on Monday, and 3 day weekend trips starting on Fridays, from mid October to end of December in a csv file. 
+- Real agents and tools, limited data
+- Flai only has information about 20 cities in Europe. 
+- There are no real time APIs being called. 
+- Weather data for each destination and month, and average flight time between destinations was scraped and provided via a csv file. 
+- Prices are completely random numbers, for weekday trips lasting 5 days starting on Monday, and 3 - day weekend trips starting on Fridays, from mid October to end of December in a csv file. 
 
 
 Having a conversation with Flai: step by step
@@ -113,8 +112,6 @@ agent = Agent(
 )
 ```
 
-
-
 ### Step 3: Agent loop (Runner / Orchestrator)
 Once the tools are called and the tool outputs have been received, the orchestrator has to make a decision whether to call another tool, answer, stop, etc. 
 
@@ -131,7 +128,6 @@ Note how in this demo there is no tool specific for destination descriptions or 
 
 
 ### Traces: tool calls throughout the demo conversation
-
 Going back to my first request, "I want to go somwehere for Christmas for under 350 euros", I can see in the logs that the first tool that is called is:
 
 ```
@@ -145,7 +141,6 @@ get_destinations_with_flight_price_limit({
 I then got a list of destinations, and asked for those destinations, which one had the highest temperature. At that point, the following tool call happens
 
 ```
-Arguments
 get_cities_with_weather_conditions({
   "list_months": [
     "December"

@@ -17,7 +17,7 @@ This post is for those starting in the AI agentic journey, not those familiar wi
 
 To make the conversation simple, I will be building a (tiny) travel agent. 
 
-The agent is deployed [here](https://huggingface.co/spaces/cvclpl/small_travel_agent) ( although it is password protected).
+The agent is deployed [here](https://huggingface.co/spaces/cvclpl/small_travel_agent) (although it is password protected).
 
 Watch the demo here
 
@@ -37,6 +37,7 @@ Watch the demo here
   <figcaption></figcaption>
 </figure>
 
+
 The goal is for users to come to our AI travel agent, Flai (as in Fly with AI, but pronounced the same as the insect). Flai will help the user discover which places to go to. [OpenAI shared a neat demo of a travel agent in July 2025](https://www.youtube.com/watch?v=1jn_RpbPbEc), where the agent has the capacity to interact with the webpage. Unlike the OpenAI demo, this is a very stripped down version that has no GUI interaction with any website, and only has access to data on disk.
 
 
@@ -54,14 +55,14 @@ Let’s break down what happens when I interact with Flai our tiny travel agent.
 
 <br>
 <div style="text-align: center;">
-<img src="{{ site.baseurl }}/images/Flai1.png" alt="conversation beginning" style="width: 600px;"/> </div>
+<img src="{{ site.baseurl }}/images/Flai1.png" alt="conversation beginning" style="width: 800px;"/> </div>
 <br> 
 
 The travel agent responds:
 
 <br>
 <div style="text-align: center;">
-<img src="{{ site.baseurl }}/images/Flai2.png" alt="conversation response" style="width: 600px;"/> </div>
+<img src="{{ site.baseurl }}/images/Flai2.png" alt="conversation response" style="width: 800px;"/> </div>
 <br> 
 
 
@@ -78,7 +79,7 @@ The choice of the agent in production applications is a tradeoff of accuracy (be
 
 <br>
 <div style="text-align: center;">
-<img src="{{ site.baseurl }}/images/FlaiDiagram.png" alt="Flai diagram" style="width: 1200px;"/> </div>
+<img src="{{ site.baseurl }}/images/FlaiDiagram.png" alt="Flai diagram" style="width: 1400px;"/> </div>
 <br> 
 
 ### Step 2: Defining the tools

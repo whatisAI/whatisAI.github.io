@@ -83,9 +83,10 @@ The choice of the agent in production applications is a tradeoff of accuracy (be
 <br> 
 
 ### Step 2: Defining the tools
-In defining the agent we said we assumed the agent LLM has no accurate information on flight/hotel pricing, or weather and we would like to give it the ability to retrieve up to date information. We give this power to the agent via the tools we make available for it to use. In the diagram above, the agent has four tools made available for it to use. 
+In defining the agent we said we assumed the agent LLM has no accurate information on flight/hotel pricing, or weather and we would like to give it the ability to retrieve up to date information. We give this power to the agent via the tools we make available for it to use. In the diagram above, the agent has three tools made available for it to use. 
 
-Tool aversion
+*Tool aversion:*
+
 In reality, the agent is an LLM, and will have a lot of information from all the data used in pre-training about. However, we do not want the agent to rely on prior knowledge to give information of hotels, flights, prices, etc, but rather to call the tools that will provide up-to-date, reliable price flight, price duration and weather information. When the agent answers from prior knowledge rather than using the tools provided, also known as tool aversion, results won’t be as expected and we will see hallucinations. 
 
 

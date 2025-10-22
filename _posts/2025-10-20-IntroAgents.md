@@ -34,7 +34,7 @@ Watch the demo here
     <p>Your browser doesn’t support HTML5 video.
        <a href="{{ site.baseurl }}/images/output2.mp4">Download the MP4</a>.</p>
   </video>
-  <figcaption>demo.</figcaption>
+  <figcaption></figcaption>
 </figure>
 
 The goal is for users to come to our AI travel agent, Flai (as in Fly with AI, but pronounced the same as the insect). Flai will help the user discover which places to go to. [OpenAI shared a neat demo of a travel agent in July 2025](https://www.youtube.com/watch?v=1jn_RpbPbEc), where the agent has the capacity to interact with the webpage. Unlike the OpenAI demo, this is a very stripped down version that has no GUI interaction with any website, and only has access to data on disk.
@@ -48,20 +48,20 @@ The goal is for users to come to our AI travel agent, Flai (as in Fly with AI, b
 - Prices are completely random numbers, for weekday trips lasting 5 days starting on Monday, and 3 - day weekend trips starting on Fridays, from mid October to end of December in a csv file. 
 
 
-Having a conversation with Flai: step by step
+## Having a conversation with Flai: step by step
 
 Let’s break down what happens when I interact with Flai our tiny travel agent. I can ask
 
 <br>
 <div style="text-align: center;">
-<img src="{{ site.baseurl }}/images/Flai1.png" alt="conversation beginning" style="width: 300px;"/> </div>
+<img src="{{ site.baseurl }}/images/Flai1.png" alt="conversation beginning" style="width: 600px;"/> </div>
 <br> 
 
 The travel agent responds:
 
 <br>
 <div style="text-align: center;">
-<img src="{{ site.baseurl }}/images/Flai2.png" alt="conversation response" style="width: 300px;"/> </div>
+<img src="{{ site.baseurl }}/images/Flai2.png" alt="conversation response" style="width: 600px;"/> </div>
 <br> 
 
 
@@ -78,7 +78,7 @@ The choice of the agent in production applications is a tradeoff of accuracy (be
 
 <br>
 <div style="text-align: center;">
-<img src="{{ site.baseurl }}/images/FlaiDiagram.png" alt="Flai diagram" style="width: 300px;"/> </div>
+<img src="{{ site.baseurl }}/images/FlaiDiagram.png" alt="Flai diagram" style="width: 600px;"/> </div>
 <br> 
 
 ### Step 2: Defining the tools

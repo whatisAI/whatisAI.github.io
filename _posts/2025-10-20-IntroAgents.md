@@ -78,7 +78,7 @@ The choice of the agent in production applications is a tradeoff of accuracy (be
 
 <br>
 <div style="text-align: center;">
-<img src="{{ site.baseurl }}/images/FlaiDiagram.png" alt="Flai diagram" style="width: 1000px;"/> </div>
+<img src="{{ site.baseurl }}/images/FlaiDiagram.png" alt="Flai diagram" style="width: 1200px;"/> </div>
 <br> 
 
 ### Step 2: Defining the tools

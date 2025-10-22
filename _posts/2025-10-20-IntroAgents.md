@@ -26,7 +26,7 @@ Watch the demo here
     controls
     preload="metadata"
     playsinline
-    style="max-width:100%;height:auto;"
+    style="max-width:400%;height:auto;"
     src="{{ site.baseurl }}/images/output2.mp4"
     poster="{{ site.baseurl }}/images/output2.mp4">
     <track kind="captions" srclang="en" label="English"
@@ -78,7 +78,7 @@ The choice of the agent in production applications is a tradeoff of accuracy (be
 
 <br>
 <div style="text-align: center;">
-<img src="{{ site.baseurl }}/images/FlaiDiagram.png" alt="Flai diagram" style="width: 600px;"/> </div>
+<img src="{{ site.baseurl }}/images/FlaiDiagram.png" alt="Flai diagram" style="width: 1000px;"/> </div>
 <br> 
 
 ### Step 2: Defining the tools
